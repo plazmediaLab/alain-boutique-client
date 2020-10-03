@@ -1,9 +1,12 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import InputField from "./forms/input-field.js";
 import SubmitButton from "./forms/submit-button.js";
 
 
 export default function Form(){
+
+  const [disable, setDisable] = useState(true);
+
   return (
     <Fragment>
       <form
@@ -11,18 +14,25 @@ export default function Form(){
       >
         <InputField
           name='name' 
-          label='Nombre' 
           placeholder='Ecribe tu nombre' 
           type='text'
-        />
+        >
+          Email
+        </InputField>
         <InputField
           name='password' 
-          label='Contraseña' 
           placeholder='Ecribe tu contraseña' 
           type='password' 
-        />
+        >
+          Password
+        </InputField>
         
-        <SubmitButton title='Iniciar sesión' />
+        <SubmitButton
+          disabled={disable}
+        >
+          Iniciar Sesión
+        </SubmitButton>
+
       </form>
     </Fragment>
   );

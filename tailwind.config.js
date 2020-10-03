@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: '520px',
+      },
       fontSize: {
         'number-h1': '24px',
         'title-page': '18px',
