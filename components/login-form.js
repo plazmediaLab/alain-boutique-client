@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import InputField from "./forms/input-field.js";
-import SubmitButton from "./forms/submit-button.js";
+import BlackSubmitButton from "./forms/black-submit-button.js";
 
 
 export default function Form(){
@@ -8,32 +8,28 @@ export default function Form(){
   const [disable, setDisable] = useState(true);
 
   return (
-    <Fragment>
-      <form
-        className="mx-auto bg-white w-4/6"
+    <form
+      className="mx-auto bg-white w-4/6"
+    >
+      <InputField
+        name='email'  
+        type='text'
       >
-        <InputField
-          name='name' 
-          placeholder='Ecribe tu nombre' 
-          type='text'
-        >
-          Email
-        </InputField>
-        <InputField
-          name='password' 
-          placeholder='Ecribe tu contraseña' 
-          type='password' 
-        >
-          Password
-        </InputField>
-        
-        <SubmitButton
-          disabled={disable}
-        >
-          Iniciar Sesión
-        </SubmitButton>
+        Email
+      </InputField>
+      <InputField
+        name='password'  
+        type='password' 
+      >
+        Password
+      </InputField>
+      
+      <BlackSubmitButton
+        disabled={disable}
+      >
+        Iniciar Sesión
+      </BlackSubmitButton>
 
-      </form>
-    </Fragment>
+    </form>
   );
 };

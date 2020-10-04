@@ -12,7 +12,7 @@ export default function InputField({ children, name, type = 'text', err, placeho
         name={name}
         id={name}
         placeholder={placeholder}
-        className={`py-2 px-3 rounded border border-gray-400 block w-full ${err ? 'border-b-4 border-red-400 placeholder-red-300' : ''}`}
+        className={`py-2 px-3 rounded border border-gray-300 block w-full mt-2 ${err ? 'border-b-4 border-red-400 placeholder-red-300' : ''}`}
       />
       { err ? (
         <p className="text-sm text-red-500 pt-1 flex items-center">

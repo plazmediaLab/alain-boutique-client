@@ -12,7 +12,6 @@ export const globalStyles = css.global`
     background-size: 50px 50px;
     padding: 0;
     margin: 0;
-    color: #0F0F10;
     font-family: 'Rubik', sans-serif;
   }
 `;
@@ -29,10 +28,10 @@ export default css`
     height: 85vh;
     width: 520px;
     overflow: hidden;
-    -webkit-box-shadow: 0px 9px 25px -5px rgba(0,0,0,0.2), 0px 5px 6px -10px rgba(0,0,0,0.12); 
-    box-shadow: 0px 9px 25px -5px rgba(0,0,0,0.2), 0px 5px 6px -10px rgba(0,0,0,0.12);
-    background: #FFFFFF;
     border-radius: 10px;
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(30,27,77,0.19), 0px 10px 19px 0px rgba(30,27,77,0.06), 0px 10px 20px 0px rgba(30,27,77,0.03); 
+    box-shadow: 0px 2px 6px 0px rgba(30,27,77,0.19), 0px 10px 19px 0px rgba(30,27,77,0.06), 0px 10px 20px 0px rgba(30,27,77,0.03);
+    background: #FFFFFF;
   }
   @media (max-width: 520px) {
     main {

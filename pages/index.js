@@ -23,7 +23,7 @@ export default function Home() {
             <p className="text-center text-gray-500 mt-6">- o -</p>
 
             <Link href="/signup">
-              <a className="text-center text-p_blue-500 block mt-5">
+              <a className="text-center text-alain-blue-500 block mt-5 underline">
                 Crear una cuenta
               </a>
             </Link>
