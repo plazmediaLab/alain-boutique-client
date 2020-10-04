@@ -1,11 +1,10 @@
-import { Fragment } from 'react';
-import LoginForm from '../components/login-form';
-import Layount from '../components/layout';
+import LoginForm from 'components/login-form';
+import Layount from 'components/layout';
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <Fragment>
+    <>
 
       <Layount>
 
@@ -47,6 +46,6 @@ export default function Home() {
         }
       `}</style>
 
-    </Fragment>
+    </>
   )
 }

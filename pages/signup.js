@@ -1,14 +1,13 @@
-import { Fragment } from 'react';
-import Layount from '../components/layout';
+import Layount from 'components/layout';
 import { useRouter } from 'next/router';
-import SignUpForm from '../components/signup-form';
+import SignUpForm from 'components/signup-form';
 
 export default function SignUp(){
 
   const route = useRouter();
 
   return (
-    <Fragment>
+    <>
 
       <Layount>
 
@@ -45,6 +44,6 @@ export default function SignUp(){
         }
       `}</style>
 
-    </Fragment>
+    </>
   );
 };

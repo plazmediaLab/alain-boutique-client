@@ -1,5 +1,3 @@
-import React, { Fragment } from 'react';
-
 export default function InputField({ children, name, type = 'text', err, placeholder }){
   return (
     <div className="mb-2 w-full">

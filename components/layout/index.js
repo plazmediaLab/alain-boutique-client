@@ -1,4 +1,4 @@
-import HeaderMeta from "../header-meta";
+import HeaderMeta from "components/header-meta";
 import styles, { globalStyles } from './styles';
 
 export default function Layount({ children }){
