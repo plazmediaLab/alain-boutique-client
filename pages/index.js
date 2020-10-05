@@ -2,7 +2,7 @@ import LoginForm from 'components/login-form';
 import Layount from 'components/layout';
 import Link from 'next/link';
 
-export default function Home() {
+export default function Login() {
   return (
     <>
 
