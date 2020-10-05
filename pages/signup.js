@@ -2,9 +2,11 @@ import Layount from 'components/layout';
 import { useRouter } from 'next/router';
 import SignUpForm from 'components/signup-form';
 
-export default function SignUp(){
+export default function SignUp({ data }){
 
   const route = useRouter();
+
+  console.log(data);
 
   return (
     <>
