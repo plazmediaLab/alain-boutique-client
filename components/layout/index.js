@@ -13,8 +13,8 @@ export default function Layount({ children }){
       </header>
 
       <section className="overflow-hidden">
-        <main className="overflow-hidden text-alain-blue-800">
-
+        <main className="text-alain-blue-800 overflow-x-auto relative">
+          
           { children }
 
         </main>

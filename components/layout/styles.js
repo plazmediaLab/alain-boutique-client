@@ -27,7 +27,6 @@ export default css`
   main {
     height: 85vh;
     width: 520px;
-    overflow: hidden;
     border-radius: 10px;
     -webkit-box-shadow: 0px 2px 6px 0px rgba(30,27,77,0.19), 0px 10px 19px 0px rgba(30,27,77,0.06), 0px 10px 20px 0px rgba(30,27,77,0.03); 
     box-shadow: 0px 2px 6px 0px rgba(30,27,77,0.19), 0px 10px 19px 0px rgba(30,27,77,0.06), 0px 10px 20px 0px rgba(30,27,77,0.03);
@@ -38,6 +37,7 @@ export default css`
       height: 100vh;
       width: 100%;
       margin-top: 0;
+      border-radius: 0;
     }
   }
   section {
