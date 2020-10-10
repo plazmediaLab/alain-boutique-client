@@ -2,12 +2,11 @@ import css from 'styled-jsx/css';
 
 export const globalStyles = css.global`
   *:focus {
-    outline: none
+    outline: none;
   }
   body {
-    background-image:
-        radial-gradient(rgba(15, 15, 16, .15) 1px, rgba(255,255,255,0) 1px),
-        radial-gradient(rgba(15, 15, 16, .15) 1px, rgba(255,255,255,0) 1px);
+    background-image: radial-gradient(rgba(15, 15, 16, 0.15) 1px, rgba(255, 255, 255, 0) 1px),
+      radial-gradient(rgba(15, 15, 16, 0.15) 1px, rgba(255, 255, 255, 0) 1px);
     background-position: 0 0, 25px 25px;
     background-size: 50px 50px;
     padding: 0;
@@ -15,7 +14,7 @@ export const globalStyles = css.global`
     font-family: 'Rubik', sans-serif;
   }
 `;
-  
+
 export default css`
   /* header{
     position: relative;
@@ -28,9 +27,11 @@ export default css`
     height: 85vh;
     width: 520px;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 2px 6px 0px rgba(30,27,77,0.19), 0px 10px 19px 0px rgba(30,27,77,0.06), 0px 10px 20px 0px rgba(30,27,77,0.03); 
-    box-shadow: 0px 2px 6px 0px rgba(30,27,77,0.19), 0px 10px 19px 0px rgba(30,27,77,0.06), 0px 10px 20px 0px rgba(30,27,77,0.03);
-    background: #FFFFFF;
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(30, 27, 77, 0.19),
+      0px 10px 19px 0px rgba(30, 27, 77, 0.06), 0px 10px 20px 0px rgba(30, 27, 77, 0.03);
+    box-shadow: 0px 2px 6px 0px rgba(30, 27, 77, 0.19), 0px 10px 19px 0px rgba(30, 27, 77, 0.06),
+      0px 10px 20px 0px rgba(30, 27, 77, 0.03);
+    background: #ffffff;
   }
   @media (max-width: 520px) {
     main {

@@ -1,30 +1,26 @@
-import HeaderMeta from "components/header-meta";
+import HeaderMeta from 'components/header-meta';
 import styles, { globalStyles } from './styles';
 
-export default function Layount({ children }){
+export default function Layount({ children }) {
   return (
-
     <>
-
-      <HeaderMeta/>
+      <HeaderMeta />
 
       <header className="container mx-auto ml-3 mt-3 fixed hidden sm:block">
-        <img src="/imagotype-colors.svg" alt="Logo Plazmedia" className="w-32 absolute"/>
+        <img src="/imagotype-colors.svg" alt="Logo Plazmedia" className="w-32 absolute" />
       </header>
 
       <section className="overflow-hidden">
         <main className="text-alain-blue-800 overflow-x-auto relative">
-          
-          { children }
-
+          {/* Component content ... */}
+          {children}
         </main>
       </section>
-      
-      {/* Component content ... */}
-      <style global jsx>{ globalStyles }</style>
-      <style jsx>{ styles }</style>
 
+      <style global jsx>
+        {globalStyles}
+      </style>
+      <style jsx>{styles}</style>
     </>
-
   );
-};
+}

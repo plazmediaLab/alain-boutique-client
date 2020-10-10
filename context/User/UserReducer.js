@@ -1,15 +1,13 @@
-import {
-  TYPE_CASE
-} from '../types';
+import { TYPE_CASE } from '../types';
 
-export default ( state, action ) => {
+export default (state, action) => {
   switch (action.type) {
     case TYPE_CASE:
-      return{
-        ...state,
+      return {
+        ...state
         //...
-      }
-  
+      };
+
     default:
       return state;
   }
