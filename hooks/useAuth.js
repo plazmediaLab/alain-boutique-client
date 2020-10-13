@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import UserContext from 'context/User/UserContext';
+import { route } from 'next/dist/next-server/server/router';
+import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
 import axios from 'utilities/axios';
 
 /**
@@ -11,6 +14,11 @@ function useAuth() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const userContext = useContext(UserContext);
+  const { fetchDataSave } = userContext;
+
+  const router = useRouter();
+
   const data = async (email, password) => {
     setLoading(true);
 
@@ -22,10 +30,18 @@ function useAuth() {
 
       setError(null);
       setLoading(false);
-      return console.log(res.data);
-    } catch (error) {
+      const {
+        data: { authorization, user }
+      } = res;
+
+      localStorage.setItem('alain-x-access-token', authorization);
+
+      fetchDataSave(user);
+      router.push({ pathname: '/home' });
+    } catch (err) {
       setLoading(false);
-      return setError(error.response.data);
+      console.log(err);
+      if (err) setError(err.response.data);
     }
   };
 

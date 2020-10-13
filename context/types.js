@@ -1,1 +1,1 @@
-export const TYPE_CASE = 'TYPE_CASE';
+export const AUTH_DATA = 'AUTH_DATA';

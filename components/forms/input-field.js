@@ -7,10 +7,10 @@ export default function InputField({
   handdleData
 }) {
   return (
-    <div className="mb-2 w-full">
+    <div className="mb-4 w-full">
       <label
         htmlFor={name}
-        className="uppercase text-label tracking-wider font-medium text-gray-500">
+        className="uppercase text-label tracking-wider font-medium text-gray-500 block mb-1">
         {children}
       </label>
       <input
@@ -18,7 +18,7 @@ export default function InputField({
         name={name}
         id={name}
         placeholder={placeholder}
-        className={`py-2 px-3 rounded border border-gray-300 block w-full mt-2 ${
+        className={`py-2 px-3 rounded border border-gray-300 block w-full ${
           err ? 'border-b-4 border-red-400 placeholder-red-300' : ''
         }`}
         onChange={(e) => handdleData(e)}

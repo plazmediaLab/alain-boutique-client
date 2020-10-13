@@ -1,14 +1,14 @@
-import { TYPE_CASE } from '../types';
+import { AUTH_DATA } from '../types';
 
-export default (state, action) => {
+export default function (state, action) {
   switch (action.type) {
-    case TYPE_CASE:
+    case AUTH_DATA:
       return {
-        ...state
-        //...
+        ...state,
+        user: action.payload
       };
 
     default:
       return state;
   }
-};
+}

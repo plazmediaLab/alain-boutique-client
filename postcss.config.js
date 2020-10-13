@@ -2,7 +2,7 @@ const purgecss = [
   '@fullhuman/postcss-purgecss',
   {
     // Especifique las rutas a todos los archivos que utilizan las directivas
-    content: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
+    content: ['./pages/**/*.{js,jsx}', './components/**/*.{js,jsx,css}'],
     // Esta es la función utilizada para extraer nombres de clases utilizadas.
     defaultExtractor: (content) => {
       // Capture lo más generosamente posible cosas incluidas como `h- (screen-1.5)`
