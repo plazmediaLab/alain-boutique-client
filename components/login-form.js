@@ -28,7 +28,7 @@ export default function Form() {
 
   const handdleSubmit = (e) => {
     e.preventDefault();
-    login(dataform.email, dataform.password);
+    login(dataform);
   };
 
   return (

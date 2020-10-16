@@ -2,7 +2,8 @@ import UserContext from 'context/User/UserContext';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import fetchUserData from 'services/fetch-user-data';
-import axios from 'utilities/axios';
+import axios from 'services/axios';
+import { postLogin } from 'services/rest_service';
 
 /**
  *
@@ -10,7 +11,7 @@ import axios from 'utilities/axios';
  * @type Boolean
  * @error Return errors
  */
-function useAuth() {
+function useLogin() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -19,34 +20,24 @@ function useAuth() {
   const userContext = useContext(UserContext);
   const { setUserMethod } = userContext;
 
-  const login = async (email, password) => {
+  const login = async (body) => {
     setLoading(true);
 
-    try {
-      const {
-        data: { authorization }
-      } = await axios.post('/api/user/login', {
-        email,
-        password
-      });
+    const res = await postLogin(body);
 
-      localStorage.setItem('A-CSRF-TOKEN', authorization);
-
-      const data = await fetchUserData(authorization);
-
-      setUserMethod(data);
-
-      router.push({ pathname: '/home' });
-
+    if (!res.ok) {
       setLoading(false);
-    } catch (err) {
+      setError(res);
+    }
+
+    if (res.ok) {
+      console.log(res.authorization);
+      setError(null);
       setLoading(false);
-      console.log(err);
-      if (err) setError(err.response.data);
     }
   };
 
   return [login, loading, error];
 }
 
-export default useAuth;
+export default useLogin;

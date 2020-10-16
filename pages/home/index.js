@@ -2,12 +2,11 @@ import Layount from 'components/layout';
 import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
-import useVerifyAuth from 'hooks/useVerifyAuth';
 
 export default function Home() {
   // TODO · Crear el componente Skeleton para mostrar mientras carga la informaciòn 10/15/2020
 
-  const authorization = useVerifyAuth();
+  const authorization = null;
 
   return (
     <>

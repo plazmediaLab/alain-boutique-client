@@ -1,4 +1,4 @@
-import axios from 'utilities/axios';
+import axios from 'services/axios';
 
 export default async function fetchUserData(TOKEN) {
   try {
