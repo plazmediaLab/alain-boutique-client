@@ -14,7 +14,8 @@ const instance = axios.create({
  * Your 'Authorization' header, etc ...
  *
  */
-instance.defaults.headers.common['Authorization'] = 'AUTH TOKEN FROM INSTANCE';
+// const A_CSRF_token = localStorage.getItem('setA_CSRF_token');
+// instance.defaults.headers.common['Authorization'] = A_CSRF_token;
 
 /**
  * Export

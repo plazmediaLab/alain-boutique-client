@@ -1,7 +1,12 @@
+import { useEffect, useState } from 'react';
 import HeaderMeta from 'components/header-meta';
 import styles, { globalStyles } from './styles';
 
 export default function Layount({ children }) {
+  useEffect(() => {}, [
+    /* dependencia */
+  ]);
+
   return (
     <>
       <HeaderMeta />
@@ -11,10 +16,7 @@ export default function Layount({ children }) {
       </header>
 
       <section className="overflow-hidden">
-        <main className="text-alain-blue-800 overflow-x-auto relative">
-          {/* Component content ... */}
-          {children}
-        </main>
+        <main className="text-alain-blue-800 overflow-x-auto relative">{children}</main>
       </section>
 
       <style global jsx>

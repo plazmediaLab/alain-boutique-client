@@ -24,7 +24,7 @@ module.exports = {
     'plugin:prettier/recommended' // Haga de este el último elemento para que una configuración Prettier anule otras reglas de formato
   ],
   rules: {
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }], //Utilice nuestro archivo .prettierrc como fuente
+    'prettier/prettier': ['error', { usePrettierrc: true }, { endOfLine: 'auto' }], //Utilice nuestro archivo .prettierrc como fuente
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',

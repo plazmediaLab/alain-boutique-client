@@ -1,10 +1,11 @@
 export default function InputField({
   children,
-  name,
-  type = 'text',
   err,
+  handdleData,
+  name,
   placeholder,
-  handdleData
+  type = 'text',
+  value
 }) {
   return (
     <div className="mb-4 w-full">
@@ -22,6 +23,7 @@ export default function InputField({
           err ? 'border-b-4 border-red-400 placeholder-red-300' : ''
         }`}
         onChange={(e) => handdleData(e)}
+        value={value}
       />
       {err && err.length > 0 ? (
         <p className="text-sm text-red-500 pt-1 flex items-center">

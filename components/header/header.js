@@ -1,12 +1,15 @@
 import { useRouter } from 'next/router';
 
 export default function Header() {
-  const route = useRouter();
+  const router = useRouter();
   let title;
 
-  switch (route.pathname) {
+  switch (router.pathname) {
     case '/home':
       title = 'Inicio';
+      break;
+    case '/summary':
+      title = 'Resumen';
       break;
 
     default:

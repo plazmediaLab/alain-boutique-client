@@ -1,7 +1,7 @@
 import UserContext from 'context/User/UserContext';
-import { route } from 'next/dist/next-server/server/router';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
+import fetchUserData from 'services/fetch-user-data';
 import axios from 'utilities/axios';
 
 /**
@@ -14,30 +14,31 @@ function useAuth() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const userContext = useContext(UserContext);
-  const { fetchDataSave } = userContext;
-
   const router = useRouter();
 
-  const data = async (email, password) => {
+  const userContext = useContext(UserContext);
+  const { setUserMethod } = userContext;
+
+  const login = async (email, password) => {
     setLoading(true);
 
     try {
-      const res = await axios.post('/api/user/login', {
+      const {
+        data: { authorization }
+      } = await axios.post('/api/user/login', {
         email,
         password
       });
 
-      setError(null);
-      setLoading(false);
-      const {
-        data: { authorization, user }
-      } = res;
+      localStorage.setItem('A-CSRF-TOKEN', authorization);
 
-      localStorage.setItem('alain-x-access-token', authorization);
+      const data = await fetchUserData(authorization);
 
-      fetchDataSave(user);
+      setUserMethod(data);
+
       router.push({ pathname: '/home' });
+
+      setLoading(false);
     } catch (err) {
       setLoading(false);
       console.log(err);
@@ -45,7 +46,7 @@ function useAuth() {
     }
   };
 
-  return [data, loading, error];
+  return [login, loading, error];
 }
 
 export default useAuth;
