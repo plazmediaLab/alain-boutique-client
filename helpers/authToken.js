@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+import Cookie from 'js-cookie';
 
 export default class authToken {
   constructor(CSFR_TOKEN) {
@@ -19,6 +20,10 @@ export default class authToken {
 
   get isExpired() {
     return new Date() > this.expiresAt;
+  }
+
+  get deletCookie() {
+    return !this.isExpired && Cookie.remove('A-CSRF-COOKIE');
   }
 
   get isValid() {

@@ -3,7 +3,6 @@ import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
 import Cookies from 'cookies';
-import Cookie from 'js-cookie';
 import authToken from 'helpers/authToken';
 import useAuth from 'hooks/useAuth';
 import { useContext, useEffect, useState } from 'react';
@@ -73,7 +72,6 @@ export async function getServerSideProps(constex) {
   const A_CSRF_TOKEN = cookies.get('A-CSRF-COOKIE');
 
   const isValidToken = new authToken(A_CSRF_TOKEN).isValid;
-  !isValidToken && Cookie.remove('A-CSRF-COOKIE');
 
   return {
     props: {

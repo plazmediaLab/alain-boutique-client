@@ -20,7 +20,6 @@ function useAuth() {
     const res = await postUserInfo(A_CSRF_TOKEN);
 
     if (!res || !res.ok) {
-      Cookie.remove('A-CSRF-TOKEN');
       router.push('/login');
       return false;
     }
