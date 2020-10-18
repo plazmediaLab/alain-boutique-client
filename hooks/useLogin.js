@@ -1,9 +1,7 @@
-import UserContext from 'context/User/UserContext';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
-import fetchUserData from 'services/fetch-user-data';
-import axios from 'services/axios';
+import { useState } from 'react';
 import { postLogin } from 'services/rest_service';
+import Cookie from 'js-cookie';
 
 /**
  *
@@ -17,9 +15,6 @@ function useLogin() {
 
   const router = useRouter();
 
-  const userContext = useContext(UserContext);
-  const { setUserMethod } = userContext;
-
   const login = async (body) => {
     setLoading(true);
 
@@ -31,9 +26,11 @@ function useLogin() {
     }
 
     if (res.ok) {
-      console.log(res.authorization);
+      Cookie.set('A-CSRF-COOKIE', res.authorization, { /*secure: true,*/ sameSite: 'alain' });
+
       setError(null);
       setLoading(false);
+      router.push('/home');
     }
   };
 
