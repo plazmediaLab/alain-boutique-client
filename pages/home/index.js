@@ -2,13 +2,12 @@ import Layount from 'components/layout';
 import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
-import Cookies from 'cookies';
-import authToken from 'helpers/authToken';
 import useAuth from 'hooks/useAuth';
 import { useContext, useEffect, useState } from 'react';
 import UserContext from 'context/User/UserContext';
+import processToken from 'helpers/authToken';
 
-function Home(props) {
+export default function Home(props) {
   // TODO · Rediseñar el componente Skeleton para mostrar mientras carga la informaciòn 10/15/2020
   // TODO · Refactorizar todo el proceso de Autenticación 10/18/2020
 
@@ -62,22 +61,9 @@ function Home(props) {
 }
 
 export async function getServerSideProps(constex) {
-  // TODO · Crear un metodo para decodificar el token 10/16/2020
-
-  // req, res, query
-  // req cookies!
-  const cookies = new Cookies(constex.req);
-
-  // get token
-  const A_CSRF_TOKEN = cookies.get('A-CSRF-COOKIE');
-
-  const isValidToken = new authToken(A_CSRF_TOKEN).isValid;
-
   return {
     props: {
-      A_CSRF_TOKEN: isValidToken ? A_CSRF_TOKEN : null
+      A_CSRF_TOKEN: await processToken(constex.req)
     }
   };
 }
-
-export default Home;

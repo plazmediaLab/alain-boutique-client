@@ -15,7 +15,8 @@ module.exports = {
   env: {
     browser: true, // Habilita globales del navegador como ventana y documento
     amd: true, // Habilita require () y define () como variables globales según la especificación amd.
-    node: true // Habilita las variables globales de Node.js y el alcance de Node.js.
+    node: true, // Habilita las variables globales de Node.js y el alcance de Node.js.
+    es6: true // Tell ESLint that we use ecmascript 6, to avoid modern code syntax errors
   },
   extends: [
     'eslint:recommended',

@@ -1,7 +1,8 @@
 import jwtDecode from 'jwt-decode';
 import Cookie from 'js-cookie';
+import Cookies from 'cookies';
 
-export default class authToken {
+class authToken {
   constructor(CSFR_TOKEN) {
     // Vamos a utilizar por defecto un decodedToken caducado
     this.decodedToken = { email: '', exp: 0 };
@@ -22,11 +23,31 @@ export default class authToken {
     return new Date() > this.expiresAt;
   }
 
-  get deletCookie() {
-    return !this.isExpired && Cookie.remove('A-CSRF-COOKIE');
-  }
-
   get isValid() {
     return !this.isExpired;
   }
 }
+
+const processToken = (context) => {
+  const process = new Promise((resolve, reject) => {
+    // req, res, query
+    // req cookies!
+    const cookies = new Cookies(context);
+
+    // get token
+    const A_CSRF_TOKEN = cookies.get('A-CSRF-COOKIE');
+
+    const isValidToken = new authToken(A_CSRF_TOKEN).isValid;
+
+    if (!isValidToken) {
+      Cookie.remove('A-CSRF-COOKIE');
+      reject(null);
+    }
+
+    resolve(A_CSRF_TOKEN);
+  });
+
+  return process;
+};
+
+export default processToken;
