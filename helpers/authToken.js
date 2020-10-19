@@ -29,25 +29,19 @@ class authToken {
 }
 
 const processToken = (context) => {
-  const process = new Promise((resolve, reject) => {
-    // req, res, query
-    // req cookies!
-    const cookies = new Cookies(context);
+  const cookies = new Cookies(context);
 
-    // get token
-    const A_CSRF_TOKEN = cookies.get('A-CSRF-COOKIE');
+  // get token
+  const A_CSRF_TOKEN = cookies.get('A-CSRF-COOKIE');
 
-    const isValidToken = new authToken(A_CSRF_TOKEN).isValid;
+  const isValidToken = new authToken(A_CSRF_TOKEN).isValid;
 
-    if (!isValidToken) {
-      Cookie.remove('A-CSRF-COOKIE');
-      reject(null);
-    }
-
-    resolve(A_CSRF_TOKEN);
-  });
-
-  return process;
+  if (!isValidToken) {
+    Cookie.remove('A-CSRF-COOKIE');
+    return null;
+  } else {
+    return A_CSRF_TOKEN;
+  }
 };
 
 export default processToken;
