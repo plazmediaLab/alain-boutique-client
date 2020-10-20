@@ -20,7 +20,7 @@ export default css`
     position: relative;
     background-color: red;   
   } */
-  /* header > :gloval(img){
+  /* header > :global(img){
     width: 10rem;
   } */
   main {

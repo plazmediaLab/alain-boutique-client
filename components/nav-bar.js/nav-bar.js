@@ -5,7 +5,7 @@ export default function NavBar() {
 
   return (
     <>
-      <footer className="sticky bottom-0 left-0 w-full bg-white grid place-items-center">
+      <footer className="sticky bottom-0 left-0 w-full bg-white grid place-items-center h-custom">
         <nav className="w-full px-4">
           <ul className="flex justify-around">
             <li>
@@ -67,7 +67,7 @@ export default function NavBar() {
               </Link>
             </li>
             <li>
-              <a className="w-10 h-10 text-gray-500 rounded-full grid place-items-center border border-gray-200">
+              <a className="w-10 h-10 text-gray-500 rounded-full grid place-items-center border border-alain-blue-200">
                 <img src="/perfil-default-img.png" alt="Avatar small" />
               </a>
             </li>
@@ -76,7 +76,6 @@ export default function NavBar() {
       </footer>
       <style jsx>{`
         footer {
-          height: 56px;
           -webkit-box-shadow: 0px -2px 4px 0px rgba(30, 27, 77, 0.13);
           box-shadow: 0px -2px 4px 0px rgba(30, 27, 77, 0.13);
         }

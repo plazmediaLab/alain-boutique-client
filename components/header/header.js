@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={` w-full grid place-items-center sticky top-0 left-0`}>
+      <header className={`w-full grid place-items-center sticky top-0 left-0 h-custom`}>
         <section className="w-full px-3 flex space-x-2">
           <div className="w-10 h-10 grid place-items-center rounded-full">
             <svg
@@ -54,7 +54,6 @@ export default function Header() {
 
       <style jsx>{`
         header {
-          height: 56px;
           -webkit-box-shadow: 0px 2px 4px 0px rgba(30, 27, 77, 0.13);
           box-shadow: 0px 2px 4px 0px rgba(30, 27, 77, 0.13);
           background: rgba(

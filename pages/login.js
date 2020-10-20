@@ -11,7 +11,7 @@ export default function Login() {
             <img src="/isotype.svg" alt="Alain Boutique Isotype" className="mx-auto" />
             <h1 className="text-center font-medium text-2xl">Alain Boutique</h1>
             <p className="text-center font-light text-sm text-gray-500 tracking-wider mb-5">
-              Sales manager v1.0.0
+              Sales manager v2.0.0
             </p>
 
             <LoginForm />
