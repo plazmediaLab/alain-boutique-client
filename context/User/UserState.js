@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import UserContext from './UserContext';
 import UserReducer from './UserReducer';
-import { AUTH_DATA, SET_ACSRF_AUTH } from '../types';
+import { AUTH_DATA, SET_ACSRF_AUTH, AUTH_LOGOUT } from '../types';
 
 const UserState = ({ children }) => {
   // Initial State
@@ -23,12 +23,19 @@ const UserState = ({ children }) => {
       payload: user
     });
   };
+  const logOutMethod = () => {
+    dispath({
+      type: AUTH_LOGOUT,
+      payload: initialState
+    });
+  };
 
   return (
     <UserContext.Provider
       value={{
         A_CSRF_Auth: state.A_CSRF_Auth,
         user: state.user,
+        logOutMethod,
         setACSRFMethod,
         setUserMethod
       }}>

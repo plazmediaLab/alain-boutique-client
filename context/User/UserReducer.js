@@ -1,4 +1,4 @@
-import { AUTH_DATA, SET_ACSRF_AUTH } from '../types';
+import { AUTH_DATA, SET_ACSRF_AUTH, AUTH_LOGOUT } from '../types';
 
 export default function (state, action) {
   switch (action.type) {
@@ -12,6 +12,8 @@ export default function (state, action) {
         ...state,
         user: action.payload
       };
+    case AUTH_LOGOUT:
+      return action.payload;
 
     default:
       return state;

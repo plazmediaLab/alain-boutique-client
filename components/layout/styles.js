@@ -1,7 +1,8 @@
 import css from 'styled-jsx/css';
 
 export const globalStyles = css.global`
-  *:focus {
+  *:focus,
+  button:focus {
     outline: none;
   }
   body {
