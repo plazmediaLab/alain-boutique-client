@@ -1,5 +1,4 @@
 import jwtDecode from 'jwt-decode';
-import Cookie from 'js-cookie';
 import Cookies from 'cookies';
 
 class authToken {
@@ -37,7 +36,6 @@ const processToken = (context) => {
   const isValidToken = new authToken(A_CSRF_TOKEN).isValid;
 
   if (!isValidToken) {
-    Cookie.remove('A-CSRF-COOKIE');
     return null;
   } else {
     return A_CSRF_TOKEN;

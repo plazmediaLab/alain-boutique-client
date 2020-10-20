@@ -17,6 +17,7 @@ function useAuth(A_CSRF_TOKEN) {
     const res = await postUserInfo(A_CSRF_TOKEN);
 
     if (!res || !res.ok) {
+      Cookie.remove('A-CSRF-COOKIE');
       router.push('/login');
       return false;
     }
@@ -39,7 +40,7 @@ function useAuth(A_CSRF_TOKEN) {
     }
   }, [process]);
 
-  return [successAuth, authorization];
+  return [successAuth];
 }
 
 export default useAuth;

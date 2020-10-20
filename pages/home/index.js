@@ -4,19 +4,9 @@ import Header from 'components/header/header';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
 import useAuth from 'hooks/useAuth';
 import processToken from 'helpers/authToken';
-import { useEffect } from 'react';
 
 export default function Home(props) {
-  const [successAuth, authorization] = useAuth(props.A_CSRF_TOKEN);
-
-  useEffect(
-    () => {
-      authorization();
-    },
-    [
-      /* dependencia */
-    ]
-  );
+  const [successAuth] = useAuth(props.A_CSRF_TOKEN);
 
   return (
     <>
