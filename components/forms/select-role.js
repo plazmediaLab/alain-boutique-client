@@ -1,4 +1,4 @@
-export default function SelectRole({ handdleRole, role }) {
+export default function SelectRole({ handleRole, role }) {
   return (
     <div className="mb-4 mt-8">
       <p className="block my-2 text-center font-light tracking-wider mb-6">Registrarse como:</p>
@@ -13,7 +13,7 @@ export default function SelectRole({ handdleRole, role }) {
             name="empleoactual"
             value="USER_ROLE"
             className="hidden"
-            onClick={(e) => handdleRole(e)}
+            onClick={(e) => handleRole(e)}
           />
           <svg
             className="w-6 h-6 mr-1"
@@ -39,7 +39,7 @@ export default function SelectRole({ handdleRole, role }) {
             name="empleoactual"
             value="PARNERTH_ROLE"
             className="hidden"
-            onClick={(e) => handdleRole(e)}
+            onClick={(e) => handleRole(e)}
           />
           <svg
             className="w-6 h-6 mr-1"

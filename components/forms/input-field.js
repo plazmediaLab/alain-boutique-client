@@ -1,7 +1,7 @@
 export default function InputField({
   children,
   err,
-  handdleData,
+  handleData,
   name,
   placeholder,
   type = 'text',
@@ -22,7 +22,7 @@ export default function InputField({
         className={`py-2 px-3 rounded border border-gray-300 block w-full ${
           err ? 'border-b-4 border-red-400 placeholder-red-300' : ''
         }`}
-        onChange={(e) => handdleData(e)}
+        onChange={(e) => handleData(e)}
         value={value}
       />
       {err && err.length > 0 ? (

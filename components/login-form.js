@@ -15,18 +15,18 @@ export default function Form() {
   const [login, loading, error] = useLogin();
 
   useEffect(() => {
-    if (dataform.email.trim() && dataform.password.trim()) {
+    if (dataform.email.trim() && dataform.password) {
       setDisable(false);
     } else {
       setDisable(true);
     }
   }, [dataform]);
 
-  const handdleData = (e) => {
+  const handleData = (e) => {
     setDataForm({ ...dataform, [e.target.name]: e.target.value });
   };
 
-  const handdleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     login(dataform);
   };
@@ -34,11 +34,11 @@ export default function Form() {
   return (
     // TODO · Quitar el valor por defecto de los Inputs 10/15/2020
 
-    <form className="mx-auto bg-white w-4/6" onSubmit={(e) => handdleSubmit(e)}>
+    <form className="mx-auto bg-white w-4/6" onSubmit={(e) => handleSubmit(e)}>
       <InputField
         name="email"
         type="email"
-        handdleData={handdleData}
+        handleData={handleData}
         err={error && true}
         value={dataform.email}>
         Email
@@ -46,7 +46,7 @@ export default function Form() {
       <InputField
         name="password"
         type="password"
-        handdleData={handdleData}
+        handleData={handleData}
         err={error && true}
         value={dataform.password}>
         Password
