@@ -38,3 +38,12 @@ export const postUserInfo = async (A_CSRF_TOKEN) => {
     }
   }
 };
+
+export const postSignUp = async (data) => {
+  try {
+    const res = await post('/api/user/signup', data);
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};

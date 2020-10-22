@@ -15,8 +15,8 @@ export default function SignUp() {
             <SignUpForm />
 
             <button
-              className="text-center text-alain-blue-500 block mt-10 cursor-pointer hover:underline mx-auto"
-              onClick={() => route.back()}>
+              className="text-center text-alain-blue-500 block cursor-pointer hover:underline mx-auto"
+              onClick={() => route.push('/login')}>
               <svg
                 className="w-6 h-6 inline-block mr-2"
                 fill="none"

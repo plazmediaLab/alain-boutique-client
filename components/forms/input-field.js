@@ -1,7 +1,8 @@
 export default function InputField({
   children,
   err,
-  handleData,
+  onChange,
+  onBlur,
   name,
   placeholder,
   type = 'text',
@@ -19,11 +20,12 @@ export default function InputField({
         name={name}
         id={name}
         placeholder={placeholder}
-        className={`py-2 px-3 rounded border border-gray-300 block w-full ${
+        className={`py-2 px-3 rounded border border-gray-300 block w-full focus:border-p_blue-500 ${
           err ? 'border-b-4 border-red-400 placeholder-red-300' : ''
         }`}
-        onChange={(e) => handleData(e)}
+        onChange={(e) => onChange(e)}
         value={value}
+        onBlur={onBlur}
       />
       {err && err.length > 0 ? (
         <p className="text-sm text-red-500 pt-1 flex items-center">

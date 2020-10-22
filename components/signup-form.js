@@ -1,70 +1,75 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import InputField from './forms/input-field.js';
 import BlueSubmitButton from './forms/blue-submit-button.js';
 import SelectRole from './forms/select-role.js';
 import LoadingIcon from './resources/loading-icon';
+import useSignUp from 'hooks/useSignUp.js';
+import ErrorMsn from 'components/resources/error-msn';
 
 export default function SignUpForm() {
-  // eslint-disable-next-line
-  const [disable, setDisable] = useState(true);
   const [role, setRole] = useState('');
-  const [loading] = useState(false);
-  const [newuser, setNewUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: ''
-  });
 
-  useEffect(() => {
-    if (newuser.name.trim() && newuser.email.trim() && newuser.password && newuser.role) {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
-  }, [newuser]);
+  const [formik, loading, error] = useSignUp(role);
 
   const handleRole = (e) => {
     setRole(e.target.value);
-    setNewUser({ ...newuser, role: e.target.value });
-  };
-
-  const handleData = (e) => {
-    setNewUser({ ...newuser, [e.target.name]: e.target.value.trim() });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const { password, password_repeat } = newuser;
-
-    if (password === password_repeat) {
-      delete newuser['password_repeat'];
-      const data = { ...newuser, role };
-      console.log(data);
-    }
   };
 
   return (
-    <form className="mx-auto bg-white w-4/6" onSubmit={(e) => handleSubmit(e)}>
-      <InputField name="name" type="text" handleData={handleData}>
+    <form
+      className={`mx-auto bg-white w-4/6 ${!formik.isValid ? 'mb-5' : 'mb-10'}`}
+      onSubmit={formik.handleSubmit}>
+      <InputField
+        name="name"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.name}
+        err={formik.touched.name && formik.errors.name ? formik.errors.name : null}
+        onBlur={formik.handleBlur}>
         Nombre
       </InputField>
-      <InputField name="email" type="text" handleData={handleData}>
+      <InputField
+        name="email"
+        type="email"
+        err={formik.touched.email && formik.errors.email ? formik.errors.email : null}
+        onChange={formik.handleChange}
+        value={formik.values.email}
+        onBlur={formik.handleBlur}>
         Email
       </InputField>
-      <InputField name="password" type="password" handleData={handleData}>
+      <InputField
+        name="password"
+        type="password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+        err={formik.touched.password && formik.errors.password ? formik.errors.password : null}
+        onBlur={formik.handleBlur}>
         Password
       </InputField>
-      <InputField name="password_repeat" type="password" handleData={handleData}>
+      <InputField
+        name="password_repeat"
+        type="password"
+        onChange={formik.handleChange}
+        value={formik.values.password_repeat}
+        err={
+          formik.touched.password_repeat && formik.errors.password_repeat
+            ? formik.errors.password_repeat
+            : null
+        }
+        onBlur={formik.handleBlur}>
         Confirmar password
       </InputField>
 
       <SelectRole handleRole={handleRole} role={role} />
 
-      <BlueSubmitButton bg="p_blue-500" disabled={disable}>
+      <BlueSubmitButton
+        bg="p_blue-500"
+        disabled={formik.isValid && role ? false : true}
+        loading={loading}>
         {loading ? <LoadingIcon fill="#fff" w="16" h="16" classN="m-1 mx-auto" /> : 'Regístrar'}
       </BlueSubmitButton>
+
+      {error ? <ErrorMsn message={error.message} /> : null}
     </form>
   );
 }
