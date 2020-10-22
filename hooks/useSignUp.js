@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 function useSignUp(ROLE) {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
 
   const router = useRouter();
 
@@ -58,7 +58,7 @@ function useSignUp(ROLE) {
         setLoading(false);
         setError(null);
         console.log(res);
-        router.push('/login');
+        router.push({ pathname: '/login', query: { new_account_created: true } });
       }
     }
   });

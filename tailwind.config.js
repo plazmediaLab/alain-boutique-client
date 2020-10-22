@@ -6,6 +6,9 @@ module.exports = {
   purge: ['./pages/**/*.jsx', './pages/**/*.js'],
   theme: {
     extend: {
+      inset: {
+        1: '1rem'
+      },
       height: {
         custom: '56px'
       },

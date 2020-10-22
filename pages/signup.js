@@ -1,9 +1,13 @@
 import Layount from 'components/layout';
 import { useRouter } from 'next/router';
 import SignUpForm from 'components/signup-form';
+import { useState } from 'react';
+import ModalSuccess from 'components/modal/modal_success';
 
 export default function SignUp() {
-  const route = useRouter();
+  const [open, setOpen] = useState(false);
+
+  const router = useRouter();
 
   return (
     <>
@@ -16,7 +20,7 @@ export default function SignUp() {
 
             <button
               className="text-center text-alain-blue-500 block cursor-pointer hover:underline mx-auto"
-              onClick={() => route.push('/login')}>
+              onClick={() => router.push({ pathname: '/login' })}>
               <svg
                 className="w-6 h-6 inline-block mr-2"
                 fill="none"
@@ -32,6 +36,8 @@ export default function SignUp() {
               </svg>
               Regresar
             </button>
+            <button onClick={() => setOpen(!open)}>Open Modal</button>
+            <ModalSuccess message="Modal open" opneModal={open} />
           </section>
         </div>
         <footer className="w-full grid place-items-center">
