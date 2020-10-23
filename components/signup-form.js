@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import InputField from './forms/input-field.js';
-import BlueSubmitButton from './forms/blue-submit-button.js';
 import SelectRole from './forms/select-role.js';
 import LoadingIcon from './resources/loading-icon';
 import useSignUp from 'hooks/useSignUp.js';
 import ErrorMsn from 'components/resources/error-msn';
+import SubmitButton from './forms/submit-button.js';
 
 export default function SignUpForm() {
   const [role, setRole] = useState('');
@@ -62,12 +62,13 @@ export default function SignUpForm() {
 
       <SelectRole handleRole={handleRole} role={role} />
 
-      <BlueSubmitButton
-        bg="p_blue-500"
+      <SubmitButton
         disabled={formik.isValid && role ? false : true}
-        loading={loading}>
-        {loading ? <LoadingIcon fill="#fff" w="16" h="16" classN="m-1 mx-auto" /> : 'Regístrar'}
-      </BlueSubmitButton>
+        loading={loading}
+        bg="alain-blue-500"
+        hover="alain-blue-600">
+        {loading ? <LoadingIcon fill="#fff" w="16" h="16" classN="m-1 mx-auto" /> : 'Registrar'}
+      </SubmitButton>
 
       {error ? <ErrorMsn message={error.message} /> : null}
     </form>
