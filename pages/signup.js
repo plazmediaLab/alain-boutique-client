@@ -9,6 +9,13 @@ export default function SignUp() {
 
   const router = useRouter();
 
+  const modalAction = () => {
+    setOpen(true);
+    setTimeout(() => {
+      setOpen(false);
+    }, 5000);
+  };
+
   return (
     <>
       <Layount>
@@ -36,7 +43,7 @@ export default function SignUp() {
               </svg>
               Regresar
             </button>
-            <button onClick={() => setOpen(!open)}>Open Modal</button>
+            <button onClick={modalAction}>Open Modal</button>
             <ModalSuccess message="Modal open" opneModal={open} />
           </section>
         </div>
