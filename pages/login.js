@@ -2,10 +2,10 @@ import LoginForm from 'components/login-form';
 import Layount from 'components/layout';
 import Link from 'next/link';
 
-export default function Login() {
+export default function Index() {
   return (
     <>
-      <Layount>
+      <Layount success={true}>
         <div className="w-full grid place-items-center">
           <section className="w-full">
             <img src="/isotype.svg" alt="Alain Boutique Isotype" className="mx-auto" />

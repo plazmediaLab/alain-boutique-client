@@ -14,6 +14,9 @@ export const globalStyles = css.global`
     margin: 0;
     font-family: 'Rubik', sans-serif;
   }
+  div.main-container {
+    min-height: calc(100% - 112px);
+  }
 `;
 
 export default css`

@@ -7,7 +7,7 @@ export default function SignUp() {
 
   return (
     <>
-      <Layount>
+      <Layount success={true}>
         <div className="w-full grid place-items-center">
           <section className="w-full">
             <h1 className="text-center font-medium text-2xl mb-4">Crear una cuenta</h1>
@@ -45,6 +45,14 @@ export default function SignUp() {
         }
         footer {
           height: 10%;
+        }
+        @media (max-width: 520px) {
+          div {
+            height: 95%;
+          }
+          footer {
+            height: 5%;
+          }
         }
       `}</style>
     </>

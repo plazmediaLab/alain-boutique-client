@@ -1,6 +1,6 @@
 export default function SelectRole({ handleRole, role }) {
   return (
-    <div className="mb-4 mt-8">
+    <div className="mb-4 mt-4 sm:mt-8">
       <p className="block my-2 text-center font-light tracking-wider mb-6">Registrarse como:</p>
 
       <div className="flex items-center justify-around text-gray-400">
