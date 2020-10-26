@@ -1,12 +1,13 @@
 import Layount from 'components/layout';
-import processToken from 'helpers/authToken';
+// import processToken from 'helpers/authToken';
 import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
 import useAuth from 'hooks/useAuth';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
+import { useState } from 'react';
 
 export default function Products(props) {
-  const [successAuth] = useAuth(props.A_CSRF_TOKEN);
+  const [successAuth] = useState(true);
 
   return (
     <Layount>
@@ -25,10 +26,10 @@ export default function Products(props) {
   );
 }
 
-export async function getServerSideProps(constex) {
-  return {
-    props: {
-      A_CSRF_TOKEN: processToken(constex.req)
-    }
-  };
-}
+// export async function getServerSideProps(constex) {
+//   return {
+//     props: {
+//       A_CSRF_TOKEN: processToken(constex.req)
+//     }
+//   };
+// }

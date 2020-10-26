@@ -35,7 +35,7 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton']
       }
     ],
-    'no-unused-vars': 0,
+    'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'react/prop-types': 0
   },
   plugins: ['simple-import-sort']

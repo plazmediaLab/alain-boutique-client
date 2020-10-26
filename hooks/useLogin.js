@@ -1,15 +1,19 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { postLogin } from 'services/rest_service';
-import Cookie from 'js-cookie';
+import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import AuthContext from 'context/Auth/AuthContext';
 
 function useLogin() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+
+  const authContext = useContext(AuthContext);
+  const { loginMethod } = authContext;
 
   const formik = useFormik({
     initialValues: {
@@ -34,11 +38,11 @@ function useLogin() {
       }
 
       if (res.ok) {
-        Cookie.set('A-CSRF-COOKIE', res.authorization, { /*secure: true,*/ sameSite: 'alain' });
-
+        Cookies.set('A-CSRF-COOKIE', res.authorization, { expires: 60 /*, sameSite: 'alain'*/ });
+        loginMethod(res.user);
         setError(null);
         setLoading(false);
-        router.push('/home');
+        router.replace('/home');
       }
     }
   });

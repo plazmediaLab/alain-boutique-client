@@ -1,15 +1,16 @@
 import Layount from 'components/layout';
-import UserContext from 'context/User/UserContext';
-import processToken from 'helpers/authToken';
+// import processToken from 'helpers/authToken';
 import uselogut from 'hooks/uselogut';
 import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
-import useAuth from 'hooks/useAuth';
+// import useAuth from 'hooks/useAuth';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
+import { useState } from 'react';
 
 export default function Index(props) {
-  const [successAuth] = useAuth(props.A_CSRF_TOKEN);
+  // const [successAuth] = useAuth(props.A_CSRF_TOKEN);
   const [processLogout] = uselogut();
+  const [successAuth] = useState(true);
 
   return (
     <Layount>
@@ -33,10 +34,10 @@ export default function Index(props) {
   );
 }
 
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      A_CSRF_TOKEN: processToken(context.req)
-    }
-  };
-}
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       A_CSRF_TOKEN: processToken(context.req)
+//     }
+//   };
+// }

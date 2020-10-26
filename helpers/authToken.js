@@ -1,5 +1,4 @@
 import jwtDecode from 'jwt-decode';
-import Cookies from 'cookies';
 
 class authToken {
   constructor(CSFR_TOKEN) {
@@ -27,19 +26,4 @@ class authToken {
   }
 }
 
-const processToken = (context) => {
-  const cookies = new Cookies(context);
-
-  // get token
-  const A_CSRF_TOKEN = cookies.get('A-CSRF-COOKIE');
-
-  const isValidToken = new authToken(A_CSRF_TOKEN).isValid;
-
-  if (!isValidToken) {
-    return null;
-  } else {
-    return A_CSRF_TOKEN;
-  }
-};
-
-export default processToken;
+export default authToken;

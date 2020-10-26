@@ -1,7 +1,8 @@
-import axios from './axios';
+import api from './axios';
+// import axios from './axios';
 
 const post = (url, body = {}, ACSRF = '') => {
-  return axios({
+  return api({
     method: 'POST',
     data: body,
     url: url,

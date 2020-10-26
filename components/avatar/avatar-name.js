@@ -1,4 +1,4 @@
-import UserContext from 'context/User/UserContext';
+import AuthContext from 'context/Auth/AuthContext';
 import { useContext, useEffect, useState } from 'react';
 
 export default function AvatarName() {
@@ -6,8 +6,8 @@ export default function AvatarName() {
   const [color, setColor] = useState('carbon-600');
   const [letter, setLetter] = useState('');
 
-  const userContext = useContext(UserContext);
-  const { user = '' } = userContext;
+  const authContext = useContext(AuthContext);
+  const { user = '' } = authContext;
 
   const handleLetter = (string) => {
     const newLetter = string

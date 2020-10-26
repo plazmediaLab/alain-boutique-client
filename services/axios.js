@@ -1,23 +1,24 @@
-import axios from 'axios';
+import Axios from 'axios';
+
+let urls = {
+  DEV: 'http://localhost:1922',
+  PROD: 'https://alain-boutique-api.herokuapp.com'
+};
 
 /**
  *
- * Configurations
+ * Base configurations
  *
  */
-const instance = axios.create({
-  baseURL: 'https://alain-boutique-api.herokuapp.com/'
+const api = Axios.create({
+  baseURL: urls.PROD,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
 });
-
-/**
- *
- * Your 'Authorization' header, etc ...
- *
- */
-// const A_CSRF_token = localStorage.getItem('setA_CSRF_token');
-// instance.defaults.headers.common['Authorization'] = A_CSRF_token;
 
 /**
  * Export
  */
-export default instance;
+export default api;
