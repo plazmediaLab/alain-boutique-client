@@ -1,6 +1,16 @@
 import Loading from 'components/loading/loading';
+import Router from 'next/router';
 import { useContext } from 'react';
 import AuthContext from './AuthContext';
+
+// function redirectUser(ctx, location) {
+//   if (ctx.req) {
+//     ctx.res.writeHead(302, { Location: location });
+//     ctx.res.end();
+//   } else {
+//     Router.push(location);
+//   }
+// }
 
 const ProtectRoutes = ({ children }) => {
   const authContext = useContext(AuthContext);

@@ -6,15 +6,18 @@ import Header from 'components/header/header';
 // import useAuth from 'hooks/useAuth';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
 import { useState } from 'react';
+import withPrivateRoute from 'helpers/withPrivateRoute';
 
-export default function Index(props) {
+function Index(props) {
   // const [successAuth] = useAuth(props.A_CSRF_TOKEN);
   const [processLogout] = uselogut();
   const [successAuth] = useState(true);
 
+  console.log(props.A_CSRF_ACCESS);
+
   return (
     <Layount>
-      {successAuth ? (
+      {props.A_CSRF_ACCESS ? (
         <>
           <Header />
           <div className="main-container overflow-x-hidden min-h-full p-2">
@@ -41,3 +44,10 @@ export default function Index(props) {
 //     }
 //   };
 // }
+
+Index.getInitialProps = async (context) => {
+  // console.info('##### Congratulations! You are authorized! ######', context);
+  return { A_CSRF_ACCESS: context.A_CSRF_ACCESS };
+};
+
+export default withPrivateRoute(Index);

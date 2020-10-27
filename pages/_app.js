@@ -7,11 +7,11 @@ import ProtectRoutes from 'context/Auth/ProtectRoutes';
 function MyApp({ Component, pageProps }) {
   return (
     <AuthState>
-      <ProtectRoutes>
-        <UserState>
-          <Component {...pageProps} />
-        </UserState>
-      </ProtectRoutes>
+      {/* <ProtectRoutes> */}
+      <UserState>
+        <Component {...pageProps} />
+      </UserState>
+      {/* </ProtectRoutes> */}
     </AuthState>
   );
 }
