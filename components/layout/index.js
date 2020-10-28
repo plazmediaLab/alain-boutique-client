@@ -1,13 +1,7 @@
-import { useEffect, useState } from 'react';
 import HeaderMeta from 'components/header-meta';
 import styles, { globalStyles } from './styles';
-import createModalNode from 'helpers/createModalNode';
 
 export default function Layount({ children }) {
-  useEffect(() => {
-    if (process.browser) createModalNode();
-  }, [process.browser]);
-
   return (
     <>
       <HeaderMeta />

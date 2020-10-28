@@ -3,9 +3,9 @@ import styles from './styles';
 
 export default function MainSkeleton() {
   return (
-    <section className="flex flex-col min-h-full">
+    <section className="flex flex-col">
       <div className="flex-1 flex flex-col items-center justify-center">
-        <h3 className="text-center my-5 text-alain-blue-700 tracking-wide text-sm">Cargando...</h3>
+        {/* <h3 className="text-center my-5 text-alain-blue-700 tracking-wide text-sm">Cargando...</h3> */}
         <div className="w-2/3">
           <Skeleton>
             <div className="w-32 h-32 mx-auto rounded-full mb-5"></div>

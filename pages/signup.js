@@ -7,7 +7,7 @@ export default function SignUp() {
 
   return (
     <>
-      <Layount success={true}>
+      <Layount>
         <div className="w-full grid place-items-center">
           <section className="w-full">
             <h1 className="text-center font-medium text-2xl mb-4">Crear una cuenta</h1>
@@ -16,7 +16,7 @@ export default function SignUp() {
 
             <button
               className="text-center text-alain-blue-500 block cursor-pointer hover:underline mx-auto"
-              onClick={() => router.push({ pathname: '/login' })}>
+              onClick={() => router.replace({ pathname: '/login' })}>
               <svg
                 className="w-6 h-6 inline-block mr-2"
                 fill="none"

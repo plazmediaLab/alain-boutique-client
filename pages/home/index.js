@@ -3,36 +3,29 @@ import Layount from 'components/layout';
 import uselogut from 'hooks/uselogut';
 import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
-// import useAuth from 'hooks/useAuth';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
 import { useState } from 'react';
-import withPrivateRoute from 'helpers/withPrivateRoute';
 
-function Index(props) {
-  // const [successAuth] = useAuth(props.A_CSRF_TOKEN);
+export default function Index() {
   const [processLogout] = uselogut();
-  const [successAuth] = useState(true);
-
-  console.log(props.A_CSRF_ACCESS);
+  const [successAuth] = useState(false);
 
   return (
     <Layount>
-      {props.A_CSRF_ACCESS ? (
-        <>
-          <Header />
-          <div className="main-container overflow-x-hidden min-h-full p-2">
-            <h1>Home page...</h1>
-            <button
-              className="py-1 px-3 rounded-full bg-red-600 text-white text-xs tracking-wider"
-              onClick={processLogout}>
-              LogOut
-            </button>
-          </div>
-          <NavBar />
-        </>
+      <Header />
+      {successAuth ? (
+        <div className="main-container overflow-x-hidden min-h-full p-2">
+          <h1>Home page...</h1>
+          <button
+            className="py-1 px-3 rounded-full bg-red-600 text-white text-xs tracking-wider"
+            onClick={processLogout}>
+            LogOut
+          </button>
+        </div>
       ) : (
         <MainSkeleton />
       )}
+      <NavBar />
     </Layount>
   );
 }
@@ -44,10 +37,3 @@ function Index(props) {
 //     }
 //   };
 // }
-
-Index.getInitialProps = async (context) => {
-  // console.info('##### Congratulations! You are authorized! ######', context);
-  return { A_CSRF_ACCESS: context.A_CSRF_ACCESS };
-};
-
-export default withPrivateRoute(Index);
