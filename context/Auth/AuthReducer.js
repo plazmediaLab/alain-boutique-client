@@ -1,8 +1,9 @@
-import { AUTH_LOGIN, AUTH_LOGOUT } from '../types';
+import { AUTH_LOGIN, AUTH_LOGOUT, SET_USER } from '../types';
 
 export default function AuthReducer(state, action) {
   switch (action.type) {
     case AUTH_LOGIN:
+    case SET_USER:
       return {
         ...state,
         user: action.payload,

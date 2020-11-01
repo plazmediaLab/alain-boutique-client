@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { AUTH_LOGOUT, AUTH_LOGIN } from '../types';
+import { AUTH_LOGOUT, AUTH_LOGIN, SET_USER } from '../types';
 import AuthContext from './AuthContext';
 import AuthReducer from './AuthReducer';
 
@@ -14,6 +14,12 @@ const UserState = ({ children }) => {
   const [state, dispath] = useReducer(AuthReducer, initialState);
 
   // Auth Methods
+  const setUserMethod = (data) => {
+    dispath({
+      type: SET_USER,
+      payload: data
+    });
+  };
   const loginMethod = (data) => {
     dispath({
       type: AUTH_LOGIN,
@@ -33,7 +39,8 @@ const UserState = ({ children }) => {
         user: state.user,
         logged: state.logged,
         loginMethod,
-        logOutMethod
+        logOutMethod,
+        setUserMethod
       }}>
       {children}
     </AuthContext.Provider>

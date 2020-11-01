@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { postLogin } from 'services/rest_service';
-import Cookies from 'js-cookie';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import AuthContext from 'context/Auth/AuthContext';
+import { setCookie } from 'helpers/cookie';
 
 function useLogin() {
   const [error, setError] = useState(null);
@@ -17,8 +17,8 @@ function useLogin() {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: ''
+      email: 'adriangd.1337@gmail.com',
+      password: '12345678'
     },
     validationSchema: Yup.object({
       email: Yup.string()
@@ -38,7 +38,7 @@ function useLogin() {
       }
 
       if (res.ok) {
-        Cookies.set('A-CSRF-COOKIE', res.authorization, { expires: 60 /*, sameSite: 'alain'*/ });
+        setCookie('A-CSRF-COOKIE', res.authorization);
         loginMethod(res.user);
         setError(null);
         setLoading(false);

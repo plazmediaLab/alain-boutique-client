@@ -1,14 +1,15 @@
 import Layount from 'components/layout';
-// import processToken from 'helpers/authToken';
-// import uselogut from 'hooks/uselogut';
 import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
 import { useState } from 'react';
+import withAuth from 'helpers/withAuth';
 
-export default function Index() {
+function Home({ logged }) {
   // const [processLogout] = uselogut();
   const [successAuth] = useState(false);
+
+  console.log(logged);
 
   return (
     <Layount>
@@ -31,10 +32,11 @@ export default function Index() {
   );
 }
 
-// export async function getServerSideProps(context) {
+export default withAuth(Home);
+
+// // Server-Side Rendering
+// Index.getInitialProps = async (ctx) => {
 //   return {
-//     props: {
-//       A_CSRF_TOKEN: processToken(context.req)
-//     }
+//     props: {}
 //   };
-// }
+// };

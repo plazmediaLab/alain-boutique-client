@@ -4,9 +4,12 @@ import NavBar from 'components/nav-bar.js/nav-bar';
 import Header from 'components/header/header';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
 import { useState } from 'react';
+import withAuth from 'helpers/withAuth';
 
-export default function Orders() {
+function Orders({ logged }) {
   const [successAuth] = useState(true);
+
+  console.log(logged);
 
   return (
     <Layount>
@@ -24,3 +27,5 @@ export default function Orders() {
     </Layount>
   );
 }
+
+export default withAuth(Orders);

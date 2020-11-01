@@ -7,7 +7,7 @@ const post = (url, body = {}, ACSRF = '') => {
     data: body,
     url: url,
     headers: {
-      'x-access-token': ACSRF,
+      x_access_token: ACSRF,
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     }
