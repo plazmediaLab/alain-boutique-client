@@ -2,7 +2,9 @@ import LoginForm from 'components/login-form';
 import Layount from 'components/layout';
 import Link from 'next/link';
 
-export default function Index() {
+function Login({ authAccess }) {
+  console.log(authAccess);
+
   return (
     <>
       <Layount>
@@ -13,6 +15,8 @@ export default function Index() {
             <p className="text-center font-light text-sm text-gray-500 tracking-wider mb-5">
               Sales manager v2.0.0
             </p>
+
+            {authAccess === 'unauthorized' ? <p>Inicia sesión para acceder a tu cuenta</p> : null}
 
             <LoginForm />
 
@@ -41,3 +45,11 @@ export default function Index() {
     </>
   );
 }
+
+Login.getInitialProps = async (ctx) => {
+  return {
+    authAccess: ctx.query.auth && ctx.query.auth
+  };
+};
+
+export default Login;

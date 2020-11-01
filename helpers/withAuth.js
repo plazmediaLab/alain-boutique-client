@@ -30,7 +30,10 @@ const withAuth = (WrappedComponent) => {
       }
 
       if (!TOKEN || !ValidToken) {
-        Router.push('/login');
+        Router.push({
+          pathname: '/login',
+          query: { access: Router.pathname, auth: 'unauthorized' }
+        });
       }
     };
 
