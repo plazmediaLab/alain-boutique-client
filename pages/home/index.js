@@ -10,8 +10,6 @@ function Home({ logged }) {
   const [processLogout] = uselogut();
   const [successAuth] = useState(true);
 
-  console.log(logged);
-
   return (
     <Layount>
       <Header />

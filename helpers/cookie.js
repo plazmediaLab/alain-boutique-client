@@ -7,7 +7,8 @@ export const setCookie = (keyword, value) => {
   if (process.browser) {
     cookie.set(keyword, value, {
       expires: 1,
-      path: '/'
+      path: '/',
+      sameSite: true
     });
   }
 };
