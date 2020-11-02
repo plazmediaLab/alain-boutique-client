@@ -8,9 +8,9 @@ export default function SignUp() {
   return (
     <>
       <Layount>
-        <div className="w-full grid place-items-center">
+        <div className="w-full grid place-items-center overflow-y-auto">
           <section className="w-full">
-            <h1 className="text-center font-medium text-2xl mb-4">Crear una cuenta</h1>
+            <h1 className="text-center font-medium text-2xl mb-4 mt-4">Crear una cuenta</h1>
 
             <SignUpForm />
 

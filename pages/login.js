@@ -2,27 +2,28 @@ import LoginForm from 'components/login-form';
 import Layount from 'components/layout';
 import Link from 'next/link';
 import AuthMsn from 'components/resources/auth-msn';
+import LogoLogin from 'components/logo-login';
 
 function Login({ authAccess }) {
   return (
     <>
       <Layount>
-        <div className="w-full grid place-items-center">
-          {authAccess === 'unauthorized' ? <AuthMsn /> : null}
+        <div className="w-full grid place-items-center relative">
+          {authAccess === 'unauthorized' ? (
+            <aside className="w-full absolute top-0 py-4">
+              <AuthMsn />
+            </aside>
+          ) : null}
 
           <section className="w-full">
-            <img src="/isotype.svg" alt="Alain Boutique Isotype" className="mx-auto" />
-            <h1 className="text-center font-medium text-2xl">Alain Boutique</h1>
-            <p className="text-center font-light text-sm text-gray-500 tracking-wider mb-5">
-              Sales manager v2.0.0
-            </p>
+            <LogoLogin />
 
             <LoginForm />
 
-            <p className="text-center text-gray-500 mt-6">- o -</p>
+            <p className="text-center text-gray-500 mt-3">- o -</p>
 
             <Link href="/signup">
-              <a className="text-center text-alain-blue-500 block mt-5 underline">
+              <a className="text-center text-alain-blue-500 block mt-3 underline">
                 Crear una cuenta
               </a>
             </Link>
