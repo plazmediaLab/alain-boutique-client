@@ -35,7 +35,8 @@ module.exports = {
           '0px 1px 3px rgba(187, 204, 242, 0.3), 0px 3px 12px -2px rgba(187, 204, 242, 0.8)',
         container_inner:
           'inset 0px 1px 3px rgba(187, 204, 242, 0.3), inset 0px 3px 12px -2px rgba(187, 204, 242, 0.8)',
-        item: '0px 1px 3px rgba(187, 204, 242, 0.3), 0px 3px 12px -2px rgba(187, 204, 242, 0.8)'
+        item: '0px 1px 3px rgba(187, 204, 242, 0.3), 0px 3px 12px -2px rgba(187, 204, 242, 0.8)',
+        menu: '0px 5px 15px 0px rgba(0,0,0,0.1), 0px 3px 6px 0px rgba(0,0,0,0.13)'
       },
       colors: {
         p_blue: {

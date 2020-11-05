@@ -22,8 +22,8 @@ export default function AvatarName() {
   useEffect(() => {
     switch (user.role) {
       case 'PARNERTH_ROLE':
-        setBg('orange-300');
-        setColor('orange-600');
+        setBg('teal-300');
+        setColor('teal-600');
         break;
       case 'USER_ROLE':
         setBg('alain-blue-300');
@@ -36,7 +36,7 @@ export default function AvatarName() {
   return (
     <div
       className={`bg-${bg} text-${color} w-10 h-10 grid place-items-center uppercase font-medium rounded-full`}>
-      <h1 className="text-xl">{letter}</h1>
+      <h1 className="text-lg tracking-wide">{letter}</h1>
     </div>
   );
 }

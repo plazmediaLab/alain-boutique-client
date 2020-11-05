@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "cookies": "^0.8.0",
+    "copy-text-to-clipboard": "^2.2.0",
     "formik": "^2.2.0",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^3.0.0",

@@ -22,8 +22,8 @@ export default function ErrorMsn({ message }) {
       </div>
       <style jsx>{`
         svg {
-          min-width: 1rem !important;
-          min-height: 1rem !important;
+          width: 1rem !important;
+          height: 1rem !important;
         }
       `}</style>
     </>
