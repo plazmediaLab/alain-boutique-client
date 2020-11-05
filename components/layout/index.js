@@ -11,7 +11,10 @@ export default function Layount({ children }) {
       </header>
 
       <section className="overflow-hidden">
-        <main className="text-alain-blue-800 overflow-x-auto relative">{children}</main>
+        <main id="main" className="text-alain-blue-800 overflow-x-hidden relative">
+          <aside id="portal_node" className="sticky top-0 left-0 w-full z-10" />
+          {children}
+        </main>
       </section>
 
       <style global jsx>

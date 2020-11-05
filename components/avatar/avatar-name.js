@@ -35,8 +35,8 @@ export default function AvatarName() {
 
   return (
     <div
-      className={`bg-${bg} text-${color} w-full h-full grid place-items-center uppercase font-medium`}>
-      <h1>{letter}</h1>
+      className={`bg-${bg} text-${color} w-10 h-10 grid place-items-center uppercase font-medium rounded-full`}>
+      <h1 className="text-xl">{letter}</h1>
     </div>
   );
 }

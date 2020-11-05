@@ -41,7 +41,7 @@ function useLogin() {
         setCookie('A-CSRF-COOKIE', res.authorization);
         loginMethod(res.user);
         setError(null);
-        setLoading(false);
+        // setLoading(false);
         router.replace('/home');
       }
     }
