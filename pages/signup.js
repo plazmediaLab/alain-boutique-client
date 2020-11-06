@@ -1,6 +1,7 @@
 import Layount from 'components/layout';
 import { useRouter } from 'next/router';
 import SignUpForm from 'components/signup-form';
+import publicAuthRedirect from 'helpers/publicAuthRedirect';
 
 function SignUp() {
   const router = useRouter();
@@ -58,5 +59,12 @@ function SignUp() {
     </>
   );
 }
+
+SignUp.getInitialProps = async (ctx) => {
+  await publicAuthRedirect(ctx, '/home');
+  return {
+    props: {}
+  };
+};
 
 export default SignUp;

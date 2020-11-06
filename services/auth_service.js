@@ -34,7 +34,6 @@ export const postUserInfo = async (A_CSRF_TOKEN) => {
       // console.log(res.data);
       return res.data;
     } catch (error) {
-      console.log(error.response.data);
       return error.response.data;
     }
   }
