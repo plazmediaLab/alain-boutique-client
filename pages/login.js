@@ -3,6 +3,7 @@ import Layount from 'components/layout';
 import Link from 'next/link';
 import AuthMsn from 'components/resources/auth-msn';
 import LogoLogin from 'components/logo-login';
+import withAuth from 'helpers/withAuth';
 
 function Login({ authAccess }) {
   return (
@@ -52,4 +53,4 @@ Login.getInitialProps = async (ctx) => {
   };
 };
 
-export default Login;
+export default withAuth(Login);

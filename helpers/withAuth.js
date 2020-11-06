@@ -13,6 +13,18 @@ const withAuth = (WrappedComponent) => {
     const TOKEN = cookie.get('A-CSRF-COOKIE');
     const ValidToken = new authToken(TOKEN).isValid;
 
+    const redirectHome = () => {
+      if (
+        Router.pathname === '/login' ||
+        Router.pathname === '/signup' ||
+        Router.pathname === '/'
+      ) {
+        Router.push({
+          pathname: '/home'
+        });
+      }
+    };
+
     const authProcces = async () => {
       if (TOKEN && ValidToken) {
         // Realizar la petición por los datos del usuario
@@ -26,6 +38,7 @@ const withAuth = (WrappedComponent) => {
         // Si la respuesta con el Token resivida es positiva
         if (res.ok) {
           setUserMethod(res.data);
+          redirectHome();
         }
       }
 
