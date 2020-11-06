@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import { postLogin } from 'services/rest_service';
+import { postLogin } from 'services/auth_service';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import AuthContext from 'context/Auth/AuthContext';

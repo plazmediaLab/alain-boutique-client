@@ -1,7 +1,6 @@
 import Layount from 'components/layout';
 import { useRouter } from 'next/router';
 import SignUpForm from 'components/signup-form';
-import withAuth from 'helpers/withAuth';
 
 function SignUp() {
   const router = useRouter();
@@ -60,4 +59,4 @@ function SignUp() {
   );
 }
 
-export default withAuth(SignUp);
+export default SignUp;

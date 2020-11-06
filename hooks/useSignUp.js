@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { postSignUp } from 'services/rest_service';
+import { postSignUp } from 'services/auth_service';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 

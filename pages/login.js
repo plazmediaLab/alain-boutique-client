@@ -3,9 +3,10 @@ import Layount from 'components/layout';
 import Link from 'next/link';
 import AuthMsn from 'components/resources/auth-msn';
 import LogoLogin from 'components/logo-login';
-import withAuth from 'helpers/withAuth';
 
 function Login({ authAccess }) {
+  // TODO · Crear un HOC para autenticar las páginas publicas en caso de que ya este iniciada la sesión 11/05/2020
+
   return (
     <>
       <Layount>
@@ -53,4 +54,4 @@ Login.getInitialProps = async (ctx) => {
   };
 };
 
-export default withAuth(Login);
+export default Login;
