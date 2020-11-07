@@ -24,10 +24,3 @@ function Home({ logged }) {
 }
 
 export default withAuth(Home);
-
-// // Server-Side Rendering
-// Index.getInitialProps = async (ctx) => {
-//   return {
-//     props: {}
-//   };
-// };

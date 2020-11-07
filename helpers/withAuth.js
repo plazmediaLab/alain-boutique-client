@@ -4,6 +4,7 @@ import authToken from './authToken';
 import AuthContext from 'context/Auth/AuthContext';
 import { postUserInfo } from 'services/auth_service';
 import cookie from 'js-cookie';
+import { getCookie } from './cookie';
 
 const withAuth = (WrappedComponent) => {
   const Wrapper = (props) => {
@@ -20,20 +21,16 @@ const withAuth = (WrappedComponent) => {
 
         // Si la respuesta con el Token resivida es negativa
         if (!res.ok) {
-          Router.push('/login');
+          Router.push({
+            pathname: '/login',
+            query: { access: Router.pathname, auth: 'unauthorized' }
+          });
         }
 
         // Si la respuesta con el Token resivida es positiva
         if (res.ok) {
           setUserMethod(res.data);
         }
-      }
-
-      if (!TOKEN || !ValidToken) {
-        Router.push({
-          pathname: '/login',
-          query: { access: Router.pathname, auth: 'unauthorized' }
-        });
       }
     };
 
@@ -47,6 +44,21 @@ const withAuth = (WrappedComponent) => {
   };
 
   Wrapper.displayName = `withAuth(${WrappedComponent.displayName || WrappedComponent.name})`;
+
+  Wrapper.getInitialProps = async (ctx) => {
+    if (ctx.req) {
+      const token = getCookie('A-CSRF-COOKIE', ctx.req);
+      const valid = new authToken(token).isValid;
+      const url = ctx.req.url.replace('/', '%2F');
+      if (!valid) {
+        ctx.res.writeHead(302, { Location: `/login?access=${url}&auth=unauthorized` });
+        ctx.res.end();
+      }
+    }
+    return {
+      props: {}
+    };
+  };
 
   return Wrapper;
 };
