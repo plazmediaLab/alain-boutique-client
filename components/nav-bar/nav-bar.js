@@ -6,7 +6,7 @@ export default function NavBar() {
 
   return (
     <>
-      <footer className="sticky bottom-0 left-0 w-full bg-white grid place-items-center h-custom">
+      <footer className="fixed sm:sticky bottom-0 left-0 w-full bg-white grid place-items-center h-custom">
         <nav className="w-full px-4">
           <ul className="flex justify-around">
             <LinkNav href="/home">

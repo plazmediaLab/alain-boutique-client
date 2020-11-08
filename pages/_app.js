@@ -1,5 +1,5 @@
 import AuthState from 'context/Auth/AuthState';
-import ProductsState from 'context/User/ProductsState';
+import ProductsState from 'context/Products/ProductsState';
 import '../styles/tailwind.css';
 
 function MyApp({ Component, pageProps }) {
