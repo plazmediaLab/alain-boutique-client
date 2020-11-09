@@ -22,3 +22,25 @@ export const getProducts = async (TOKEN) => {
     return err.response.data;
   }
 };
+
+export const getParnerths = async (TOKEN) => {
+  try {
+    const res = await get('/api/parnerth', TOKEN);
+    // console.log(res.data);
+    return res.data;
+  } catch (err) {
+    // console.log(err.response.data);
+    return err.response.data;
+  }
+};
+
+export const getGroups = async (TOKEN) => {
+  try {
+    const res = await get('/api/group', TOKEN);
+    // console.log(res.data);
+    return res.data;
+  } catch (err) {
+    // console.log(err.response.data);
+    return err.response.data;
+  }
+};

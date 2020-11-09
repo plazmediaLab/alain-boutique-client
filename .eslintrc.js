@@ -36,7 +36,8 @@ module.exports = {
       }
     ],
     'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
-    'react/prop-types': 0
+    'react/prop-types': 0,
+    'jsx-a11y/no-onchange': 0
   },
   plugins: ['simple-import-sort']
 };

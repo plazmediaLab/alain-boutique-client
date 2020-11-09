@@ -8,18 +8,31 @@ import { menuStyles } from './style';
 export default function Menu(props) {
   const authContext = useContext(AuthContext);
   const {
-    user: { name = '', email = '', parnerth_key = '' }
+    user: { name = '', email = '', parnerth_key = '', parnerth = [] }
   } = authContext;
 
   // const { user } = authContext;
-  // console.log(user);
+  // console.log(parnerth);
 
   return (
     <>
-      <div className="bg-white rounded-card shadow-menu absolute overflow-hidden z-10">
+      <div className="menu-container bg-white rounded-card shadow-menu absolute overflow-hidden z-10">
         <ul className="flex flex-col text-left">
           <li className="p-2 flex space-x-3 items-center">
             <AvatarItem name={name} email={email} />
+          </li>
+          <li className="">
+            <a
+              href="/"
+              className="p-3 border-t border-gray-200 flex justify-between items-center text-sm hover:bg-gray-200">
+              <p className="flex-1">Socios</p>
+              <div
+                className={`${
+                  parnerth.length > 9 ? 'w-8' : 'w-6'
+                } h-6 grid place-items-center rounded-full bg-gray-400 text-white`}>
+                <p className="text-xs font-medium">{parnerth.length}</p>
+              </div>
+            </a>
           </li>
           {parnerth_key ? (
             <li className="py-2 pl-3 pr-2 border-t border-gray-200 text-xs text-gray-500">
