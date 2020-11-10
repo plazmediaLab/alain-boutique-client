@@ -1,4 +1,4 @@
-import Layount from 'components/layout';
+import Layout from 'components/layout';
 import { useRouter } from 'next/router';
 import SignUpForm from 'components/signup-form';
 import publicAuthRedirect from 'helpers/publicAuthRedirect';
@@ -8,7 +8,7 @@ function SignUp() {
 
   return (
     <>
-      <Layount>
+      <Layout>
         <div className="w-full grid place-items-center overflow-y-auto">
           <section className="w-full">
             <h1 className="text-center font-medium text-2xl mb-4 mt-4">Crear una cuenta</h1>
@@ -38,7 +38,7 @@ function SignUp() {
         <footer className="w-full grid place-items-center">
           <p className="text-sm block text-gray-500">Alain Boutique · &copy; 2020 Plazmedia</p>
         </footer>
-      </Layount>
+      </Layout>
 
       <style jsx>{`
         div {

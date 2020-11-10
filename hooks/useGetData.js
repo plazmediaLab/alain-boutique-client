@@ -14,6 +14,7 @@ export default function useGetData() {
     success,
     successMethod,
     setGroupsMethod,
+    setActiveGroupMethod,
     setParnerthsMethod,
     setProductsMethod
   } = productsContext;
@@ -39,6 +40,8 @@ export default function useGetData() {
     }
     if (resGropus.ok) {
       setGroupsMethod(resGropus.groups);
+      const { color, _id, slug } = resGropus.groups[0];
+      setActiveGroupMethod({ color, _id, slug });
     }
 
     if (!error) {

@@ -1,7 +1,7 @@
 import HeaderMeta from 'components/header-meta';
 import styles, { globalStyles } from './styles';
 
-export default function Layount({ children }) {
+export default function Layout({ children }) {
   return (
     <>
       <HeaderMeta />

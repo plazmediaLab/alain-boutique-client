@@ -8,16 +8,14 @@ export default function HomeContent() {
   const productsContext = useContext(ProductsContext);
   const { active_group = {}, products = [], groups = [], setActiveGroupMethod } = productsContext;
 
-  console.log(groups);
-
   useEffect(() => {
     setActive(products.filter((x) => x.state === 'ACTIVE'));
     setStock(products.filter((x) => x.state === 'STOCK'));
   }, [products]);
 
   const handleActiveGroup = (e) => {
-    const { color, _id } = groups.find((x) => x.slug === e.target.value);
-    setActiveGroupMethod({ color, _id });
+    const { color, _id, slug } = groups.find((x) => x.slug === e.target.value);
+    setActiveGroupMethod({ color, _id, slug });
   };
 
   return (
@@ -30,7 +28,7 @@ export default function HomeContent() {
           className={`rounded-full appearance-none w-full bg-transparent truncate px-8 py-2 cursor-pointer border border-gray-300 hover:border-gray-400 hover:shadow`}
           onChange={(e) => handleActiveGroup(e)}>
           {groups.map((group) => (
-            <option value={group.slug} key={group._id}>
+            <option value={group.slug} key={group._id} selected={group.slug === active_group.slug}>
               {group.name}
             </option>
           ))}

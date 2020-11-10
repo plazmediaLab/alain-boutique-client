@@ -1,5 +1,5 @@
 import LoginForm from 'components/login-form';
-import Layount from 'components/layout';
+import Layout from 'components/layout';
 import Link from 'next/link';
 import AuthMsn from 'components/resources/auth-msn';
 import LogoLogin from 'components/logo-login';
@@ -8,7 +8,7 @@ import publicAuthRedirect from 'helpers/publicAuthRedirect';
 function Login({ authAccess }) {
   return (
     <>
-      <Layount>
+      <Layout>
         <div className="w-full grid place-items-center relative">
           {authAccess === 'unauthorized' ? (
             <aside className="w-full absolute top-0 py-4">
@@ -33,7 +33,7 @@ function Login({ authAccess }) {
         <footer className="w-full grid place-items-center">
           <p className="text-sm block text-gray-500">Alain Boutique · &copy; 2020 Plazmedia</p>
         </footer>
-      </Layount>
+      </Layout>
 
       <style jsx>{`
         div {

@@ -1,4 +1,4 @@
-import Layount from 'components/layout';
+import Layout from 'components/layout';
 // import processToken from 'helpers/authToken';
 import NavBar from 'components/nav-bar/nav-bar';
 import Header from 'components/header/header';
@@ -10,7 +10,7 @@ function Products({ logged }) {
   const [successAuth] = useState(true);
 
   return (
-    <Layount>
+    <Layout>
       {successAuth ? (
         <>
           <Header />
@@ -22,7 +22,7 @@ function Products({ logged }) {
       ) : (
         <MainSkeleton />
       )}
-    </Layount>
+    </Layout>
   );
 }
 

@@ -13,7 +13,7 @@ export default function Header() {
     if (process.browser) {
       setBrowser(navigator.userAgent.toLowerCase().indexOf('firefox') > -1);
     }
-  }, [navigator]);
+  }, [process.browser]);
 
   return (
     <>

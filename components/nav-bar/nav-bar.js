@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import LinkNav from './link-nav';
 
 export default function NavBar() {
@@ -27,7 +28,7 @@ export default function NavBar() {
                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
               </svg>
             </LinkNav>
-            <li>
+            <Link href="/new/product">
               <a className="w-10 h-10 bg-alain-blue-500 text-white rounded-full grid place-items-center shadow-alain">
                 <svg
                   className="w-6 h-6"
@@ -43,7 +44,7 @@ export default function NavBar() {
                   />
                 </svg>
               </a>
-            </li>
+            </Link>
             <LinkNav href="/summary">
               <svg
                 className="w-6 h-6"
