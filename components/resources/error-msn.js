@@ -1,8 +1,9 @@
 // eslint-disable-next-line
-export default function ErrorMsn({ message }) {
+export default function ErrorMsn({ message, mt = 'mt-6', mb = 'mb-2' }) {
   return (
     <>
-      <div className="grid place-items-center mt-6 mb-2 rounded border-l-4 border-red-300 p-3 text-red-500">
+      <div
+        className={`grid place-items-center ${mt} ${mb} rounded border-l-4 border-red-300 p-3 text-red-500`}>
         <p className="leading-tight text-xs tracking-wide">
           <svg
             className="inline-block mr-1"

@@ -4,10 +4,10 @@ import NavBar from 'components/nav-bar/nav-bar';
 import NewProduct from 'components/new/products/new-product';
 import MainSkeleton from 'components/skeleton-placeholder/main-skeleton';
 import withAuth from 'helpers/withAuth';
-import { useState } from 'react';
+import useGetData from 'hooks/useGetData';
 
-function Product() {
-  const [loading] = useState(false);
+function Product({ logged }) {
+  const [loading] = useGetData(logged);
 
   return (
     <Layout>
