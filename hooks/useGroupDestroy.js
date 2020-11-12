@@ -4,7 +4,7 @@ import useGetData from './useGetData';
 import { destroyGoup } from 'services/delete_data_services';
 
 function useGroupDestroy() {
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [, , setUpdate] = useGetData();
@@ -37,13 +37,27 @@ function useGroupDestroy() {
         if (res.ok) {
           setLoading(false);
           setUpdate(true);
-          Swal.fire('Eliminado!', 'El grupo, como sus productos han sido eliminados.', 'success');
+          // Swal.fire('Eliminado!', 'El grupo, como sus productos han sido eliminados.', 'success');
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El grupo, como sus productos han sido eliminados.',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true
+          });
         }
       }
     });
   };
 
-  return [groupDestroy, loading, error];
+  return [
+    groupDestroy,
+    loading,
+    {
+      /*error*/
+    }
+  ];
 }
 
 export default useGroupDestroy;

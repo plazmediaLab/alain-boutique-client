@@ -34,15 +34,12 @@ export default function useGetData() {
     }
 
     if (resProducts.ok) {
-      console.log(resProducts);
       setProductsMethod(resProducts.products);
     }
     if (resParnerths.ok) {
-      console.log(resParnerths);
       setParnerthsMethod(resParnerths.groups);
     }
     if (resGropus.ok) {
-      console.log(resGropus);
       setGroupsMethod(resGropus.groups);
       if (resGropus.groups.length > 0) {
         const { color, _id, slug } = resGropus.groups[0];

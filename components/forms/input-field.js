@@ -23,7 +23,7 @@ export default function InputField({
         className={`py-2 px-3 rounded border border-gray-300 block w-full focus:border-p_blue-500 ${
           err ? 'border-b-4 border-red-400 placeholder-red-300' : ''
         }`}
-        onChange={(e) => onChange(e)}
+        onChange={onChange}
         value={value}
         onBlur={onBlur}
       />

@@ -49,7 +49,6 @@ function useNewProduct(status, state, groupID) {
         setError({
           message: 'Ocurrio un ERROR interno del servidor, intentelo nuevamente en un momento.'
         });
-        console.log(res);
       }
 
       if (res.ok) {
@@ -57,7 +56,6 @@ function useNewProduct(status, state, groupID) {
         setLoading(false);
         resetForm(formik.initialValues);
         setUpdate(true);
-        console.log(res);
       }
     }
   });

@@ -23,15 +23,24 @@ export default function HomeContent() {
       <section className="w-full relative rounded-full">
         <div className="color-selector w-4 h-4 rounded-full absolute pointer-events-none"></div>
         <select
+          disabled={!active_group._id}
           name="groups"
           id="groups"
           className={`rounded-full appearance-none w-full bg-transparent truncate px-8 py-2 cursor-pointer border border-gray-300 hover:border-gray-400 hover:shadow`}
           onChange={(e) => handleActiveGroup(e)}>
-          {groups.map((group) => (
-            <option value={group.slug} key={group._id} selected={group.slug === active_group.slug}>
-              {group.name}
-            </option>
-          ))}
+          {!active_group._id ? (
+            <option value="" label="--- No tienes grupos creados ---"></option>
+          ) : (
+            groups.map((group) => (
+              <option
+                value={group.slug}
+                defaultValue={'EMPTY'}
+                key={group._id}
+                selected={group.slug === active_group.slug}>
+                {group.name}
+              </option>
+            ))
+          )}
         </select>
         <svg
           className="w-5 h-5 absolute pointer-events-none text-gray-400"
@@ -62,6 +71,11 @@ export default function HomeContent() {
         svg {
           top: calc(50% - 0.6rem);
           right: 0.7rem;
+        }
+        select:disabled {
+          opacity: 50%;
+          cursor: not-allowed;
+          color: #a0aec0;
         }
       `}</style>
     </>

@@ -25,7 +25,19 @@ export default function SelectGroup() {
           <div className="absolute icon-loading">
             <LoadingIcon fill="#e2e8f0" />
           </div>
-        ) : null}
+        ) : (
+          <svg
+            className="w-5 h-5 absolute pointer-events-none text-gray-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              fillRule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        )}
         <button
           disabled={loading || !active_group._id}
           className="bg-gray-100 text-red-300 w-8 h-8 grid place-items-center rounded"
@@ -46,7 +58,7 @@ export default function SelectGroup() {
           disabled={loading || !active_group._id}
           name="groups"
           id="groups"
-          className={`group flex-1 appearance-none w-full bg-transparent truncate p-1 cursor-pointer`}
+          className={`group flex-1 appearance-none w-full bg-transparent truncate py-1 pl-0 pr-3 cursor-pointer`}
           onChange={(e) => handleActiveGroup(e)}>
           {!active_group._id ? (
             <option value="" label="--- No tienes grupos creados ---"></option>
@@ -54,6 +66,7 @@ export default function SelectGroup() {
             groups.map((group) => (
               <option
                 value={group.slug}
+                defaultValue={'EMPTY'}
                 key={group._id}
                 selected={group.slug === active_group.slug}
                 className="text-alain-blue-800">
@@ -92,13 +105,17 @@ export default function SelectGroup() {
           cursor: not-allowed;
         }
         select.group {
-          color: ${!active_group.id ? '#a0aec0' : active_group.color};
+          color: ${!active_group._id ? '#a0aec0' : active_group.color};
           background-color: transparent;
         }
         div.container {
           grid-template-columns: auto 1fr auto;
         }
         div.icon-loading {
+          right: 2.7rem;
+        }
+        svg {
+          top: calc(50% - 0.6rem);
           right: 2.7rem;
         }
       `}</style>
