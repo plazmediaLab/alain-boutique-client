@@ -24,3 +24,12 @@ export const storeProduct = async (body) => {
     return err.response.data;
   }
 };
+
+export const storeGroup = async (body) => {
+  try {
+    const res = await post('/api/group', body);
+    return res.data;
+  } catch (err) {
+    return err.response.data;
+  }
+};

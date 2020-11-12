@@ -20,22 +20,9 @@ function useGroupDestroy() {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, eliminar!',
       customClass: {
-        container: '...',
-        popup: '...',
-        header: '...',
         title: 'swalTitle',
-        closeButton: '...',
         icon: 'swalIcon',
-        image: '...',
-        content: 'swalText',
-        input: '...',
-        validationMessage: '...',
-        actions: '...',
-        confirmButton: '...',
-        denyButton: '...',
-        cancelButton: '...',
-        loader: '...',
-        footer: '....'
+        content: 'swalText'
       }
     }).then(async (result) => {
       if (result.isConfirmed) {
