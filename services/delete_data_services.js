@@ -1,12 +1,11 @@
 import { getCookie } from 'helpers/cookie';
 import api from './axios';
 
-const post = (url, body) => {
+const destroy = (url) => {
   const TOKEN = getCookie('A-CSRF-COOKIE');
 
   return api({
-    method: 'POST',
-    data: body,
+    method: 'DELETE',
     url: url,
     headers: {
       'x-access-token': TOKEN,
@@ -16,11 +15,14 @@ const post = (url, body) => {
   });
 };
 
-export const storeProduct = async (body) => {
+export const destroyGoup = async (ID) => {
   try {
-    const res = await post('/api/product', body);
+    const res = await destroy(`/api/group/${ID}`);
     return res.data;
   } catch (err) {
+    if (err.response.data.error === 401) {
+      location.reload();
+    }
     return err.response.data;
   }
 };

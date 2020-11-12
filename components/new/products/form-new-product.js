@@ -3,6 +3,7 @@ import LoadingIcon from 'components/resources/loading-icon';
 import ProductsContext from 'context/Products/ProductsContext';
 import useNewProduct from 'hooks/useNewProduct';
 import { useContext, useState } from 'react';
+import MessageEmptyGroup from './message-empty-group';
 
 export default function FormNewProduct() {
   const [status, setStatus] = useState('USED');
@@ -15,6 +16,7 @@ export default function FormNewProduct() {
 
   return (
     <>
+      {!active_group._id && <MessageEmptyGroup />}
       <form
         className="border border-gray-300 rounded-card border-t-8 overflow-hidden"
         onSubmit={formik.handleSubmit}>
@@ -128,7 +130,7 @@ export default function FormNewProduct() {
             placeholder="Comentario"
             rows="2"
             className={`${
-              !formik.errors ? 'mb-5' : ''
+              Object.keys(formik.errors).length > 0 ? '' : 'mb-5'
             } w-full resize-none border-b border-gray-300 p-2 text-sm focus:border-alain-blue-500`}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -144,7 +146,7 @@ export default function FormNewProduct() {
           ) : null}
         </div>
         <button
-          disabled={loading || formik.isValid ? false : true}
+          disabled={!active_group._id || (loading || formik.isValid ? false : true)}
           type="submit"
           className="w-full bg-teal-500 text-white p-3 text-sm uppercase font-light tracking-wider flex justify-center">
           {loading ? <LoadingIcon fill="#fff" w="21" h="21" /> : 'Agregar producto'}

@@ -25,6 +25,22 @@ export const globalStyles = css.global`
   input[type='number'] {
     -moz-appearance: textfield;
   }
+  .swalTitle {
+    font-size: 1.2rem;
+  }
+  #swal2-content {
+    font-size: 1rem !important;
+    font-weight: lighter;
+  }
+  .swalIcon {
+    margin: 0.5rem auto !important;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .swal2-icon-content {
+    font-size: 2rem !important;
+    font-weight: medium;
+  }
 `;
 
 export default css`

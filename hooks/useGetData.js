@@ -8,6 +8,7 @@ export default function useGetData() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [update, setUpdate] = useState(false);
 
   const productsContext = useContext(ProductsContext);
   const {
@@ -22,7 +23,7 @@ export default function useGetData() {
   const TOKEN = getCookie('A-CSRF-COOKIE');
 
   const handleData = async () => {
-    setLoading(true);
+    if (!success) setLoading(true);
 
     const resProducts = await getProducts(TOKEN);
     const resParnerths = await getParnerths(TOKEN);
@@ -33,28 +34,36 @@ export default function useGetData() {
     }
 
     if (resProducts.ok) {
+      console.log(resProducts);
       setProductsMethod(resProducts.products);
     }
     if (resParnerths.ok) {
+      console.log(resParnerths);
       setParnerthsMethod(resParnerths.groups);
     }
     if (resGropus.ok) {
+      console.log(resGropus);
       setGroupsMethod(resGropus.groups);
-      const { color, _id, slug } = resGropus.groups[0];
-      setActiveGroupMethod({ color, _id, slug });
+      if (resGropus.groups.length > 0) {
+        const { color, _id, slug } = resGropus.groups[0];
+        setActiveGroupMethod({ color, _id, slug });
+      } else {
+        setActiveGroupMethod({ color: '#e2e8f0', _id: undefined, slug: undefined });
+      }
     }
 
     if (!error) {
       setLoading(false);
       successMethod();
+      setUpdate(false);
     }
   };
 
   useEffect(() => {
-    if (!success) {
+    if (!success || update) {
       handleData();
     }
-  }, []);
+  }, [update]);
 
-  return [loading, error];
+  return [loading, error, setUpdate];
 }

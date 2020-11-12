@@ -2,12 +2,14 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { storeProduct } from 'services/post_data_services';
 import * as Yup from 'yup';
+import useGetData from './useGetData';
 
 function useNewProduct(status, state, groupID) {
   // TODO · Modifiicar el EndPoint Store de Productos para agregar el campo STATUS 11/10/2020
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [, , setUpdate] = useGetData();
 
   const initialValues = {
     description: '',
@@ -54,6 +56,7 @@ function useNewProduct(status, state, groupID) {
         setError(false);
         setLoading(false);
         resetForm(formik.initialValues);
+        setUpdate(true);
         console.log(res);
       }
     }

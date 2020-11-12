@@ -1,9 +1,13 @@
+import LoadingIcon from 'components/resources/loading-icon';
 import ProductsContext from 'context/Products/ProductsContext';
+import useGroupDestroy from 'hooks/useGroupDestroy';
 import { useContext } from 'react';
 
 export default function SelectGroup() {
   const productsContext = useContext(ProductsContext);
   const { active_group = {}, groups = [], setActiveGroupMethod } = productsContext;
+
+  const [groupDestroy, loading] = useGroupDestroy();
 
   const handleActiveGroup = (e) => {
     const { color, _id, slug } = groups.find((x) => x.slug === e.target.value);
@@ -12,8 +16,16 @@ export default function SelectGroup() {
 
   return (
     <>
-      <div className="flex items-center space-x-2 rounded-card border border-gray-300 p-1 mb-3">
-        <button className="bg-gray-100 text-red-300 w-8 h-8 grid place-items-center rounded">
+      <div className="container grid items-center gap-2 rounded-card border border-gray-300 p-1 mb-3 relative">
+        {loading ? (
+          <div className="absolute icon-loading">
+            <LoadingIcon fill="#e2e8f0" />
+          </div>
+        ) : null}
+        <button
+          disabled={loading || !active_group._id}
+          className="bg-gray-100 text-red-300 w-8 h-8 grid place-items-center rounded"
+          onClick={() => groupDestroy(active_group._id)}>
           <svg
             className="w-4 h-4"
             fill="currentColor"
@@ -27,21 +39,32 @@ export default function SelectGroup() {
           </svg>
         </button>
         <select
+          disabled={loading || !active_group._id}
           name="groups"
           id="groups"
           className={`group flex-1 appearance-none w-full bg-transparent truncate p-1 cursor-pointer`}
           onChange={(e) => handleActiveGroup(e)}>
-          {groups.map((group) => (
-            <option
-              value={group.slug}
-              key={group._id}
-              selected={group.slug === active_group.slug}
-              className="text-alain-blue-800">
-              {group.name}
-            </option>
-          ))}
+          {!active_group._id ? (
+            <option value="" label="--- No tienes grupos creados ---"></option>
+          ) : (
+            groups.map((group) => (
+              <option
+                value={group.slug}
+                key={group._id}
+                selected={group.slug === active_group.slug}
+                className="text-alain-blue-800">
+                {group.name}
+              </option>
+            ))
+          )}
         </select>
-        <button className="text-alain-blue-400 bg-alain-blue-100 w-8 h-8 grid place-items-center rounded">
+        <button
+          disabled={loading}
+          className={`${
+            !active_group._id
+              ? 'text-white bg-alain-blue-400 hover:bg-alain-blue-500 shadow-md'
+              : 'text-alain-blue-400 bg-alain-blue-100'
+          } w-8 h-8 grid place-items-center rounded`}>
           <svg
             className="w-5 h-5"
             fill="currentColor"
@@ -52,9 +75,20 @@ export default function SelectGroup() {
         </button>
       </div>
       <style jsx>{`
+        button:disabled,
+        select:disabled {
+          opacity: 50%;
+          cursor: not-allowed;
+        }
         select.group {
-          color: ${Object.keys(active_group).length > 0 ? active_group.color : '#e2e8f0'};
+          color: ${!active_group.id ? '#a0aec0' : active_group.color};
           background-color: transparent;
+        }
+        div.container {
+          grid-template-columns: auto 1fr auto;
+        }
+        div.icon-loading {
+          right: 2.7rem;
         }
       `}</style>
     </>
