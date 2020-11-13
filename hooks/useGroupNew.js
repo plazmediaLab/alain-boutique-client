@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { Toast } from 'helpers/toast-swal';
 import { useState } from 'react';
 import { storeGroup } from 'services/post_data_services';
 import Swal from 'sweetalert2';
@@ -35,14 +36,9 @@ function useGroupNew(setOpenNewGroup, color) {
         setUpdate(true);
         setLoading(false);
         setOpenNewGroup(false);
-        // Swal.fire('Creado!', 'El grupo, ha sido creado exitosamente!.', 'success');
-        Swal.fire({
-          position: 'center',
+        Toast.fire({
           icon: 'success',
-          title: 'El grupo, ha sido creado exitosamente!.',
-          showConfirmButton: false,
-          timer: 1500,
-          timerProgressBar: true
+          title: 'El grupo, ha sido creado exitosamente!.'
         });
       }
     }

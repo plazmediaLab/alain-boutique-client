@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { postSignUp } from 'services/auth_service';
 import * as Yup from 'yup';
-import Swal from 'sweetalert2';
+import { SwalError, SwalWarn, Toast } from 'helpers/toast-swal';
 
 function useSignUp(ROLE) {
   const [error, setError] = useState(null);
@@ -14,18 +14,6 @@ function useSignUp(ROLE) {
   function capitalize(word) {
     return word[0].toUpperCase() + word.slice(1);
   }
-
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer);
-      toast.addEventListener('mouseleave', Swal.resumeTimer);
-    }
-  });
 
   const formik = useFormik({
     initialValues: {
@@ -64,10 +52,7 @@ function useSignUp(ROLE) {
 
       if (res._message) {
         setLoading(false);
-        Toast.fire({
-          icon: 'warning',
-          title: 'Usuario ya registrado.'
-        });
+        SwalWarn('Usuario ya registrado.');
         setError({ message: capitalize(res.errors.email.message) });
       }
 

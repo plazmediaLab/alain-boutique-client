@@ -12,7 +12,7 @@ export default function FormNewProduct() {
   const productsContext = useContext(ProductsContext);
   const { active_group = {} } = productsContext;
 
-  const [formik, loading] = useNewProduct(status, state, active_group._id);
+  const [formik, loading] = useNewProduct(status, state, active_group._id, setStatus, setState);
 
   return (
     <>
@@ -60,8 +60,12 @@ export default function FormNewProduct() {
                 id="status"
                 className="cursor-pointer w-full font-light tracking-wider appearance-none border-b border-gray-300 py-2 px-6 text-sm focus:border-alain-blue-500"
                 onChange={(e) => setStatus(e.target.value)}>
-                <option value="USED">USADO</option>
-                <option value="NEW">NUEVO</option>
+                <option value="USED" selected={status === 'USED'}>
+                  USADO
+                </option>
+                <option value="NEW" selected={status === 'NEW'}>
+                  NUEVO
+                </option>
               </select>
               <svg
                 className={`w-5 h-5 absolute icon ${
@@ -94,8 +98,12 @@ export default function FormNewProduct() {
                 id="state"
                 className="cursor-pointer w-full font-light tracking-wider appearance-none border-b border-gray-300 py-2 px-6 text-sm focus:border-alain-blue-500"
                 onChange={(e) => setState(e.target.value)}>
-                <option value="STOCK">STOCK</option>
-                <option value="ACTIVE">ACTIVO</option>
+                <option value="STOCK" selected={state === 'STOCK'}>
+                  STOCK
+                </option>
+                <option value="ACTIVE" selected={state === 'ACTIVE'}>
+                  ACTIVO
+                </option>
               </select>
               <svg
                 className={`w-5 h-5 absolute icon ${

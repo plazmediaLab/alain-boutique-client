@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import Swal from 'sweetalert2';
 import useGetData from './useGetData';
 import { destroyGoup } from 'services/delete_data_services';
+import { SwalError, Toast } from 'helpers/toast-swal';
+import Swal from 'sweetalert2';
 
 function useGroupDestroy() {
   // const [error, setError] = useState(null);
@@ -31,20 +32,15 @@ function useGroupDestroy() {
 
         if (!res.ok) {
           setLoading(false);
-          Swal.fire('Error!', res.mensaje, 'error');
+          SwalError(res.mensaje);
         }
 
         if (res.ok) {
           setLoading(false);
           setUpdate(true);
-          // Swal.fire('Eliminado!', 'El grupo, como sus productos han sido eliminados.', 'success');
-          Swal.fire({
-            position: 'center',
+          Toast.fire({
             icon: 'success',
-            title: 'El grupo, como sus productos han sido eliminados.',
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true
+            title: 'El grupo se elimino correctamente.'
           });
         }
       }

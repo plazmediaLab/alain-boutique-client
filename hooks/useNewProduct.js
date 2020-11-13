@@ -1,10 +1,11 @@
 import { useFormik } from 'formik';
+import { Toast } from 'helpers/toast-swal';
 import { useState } from 'react';
 import { storeProduct } from 'services/post_data_services';
 import * as Yup from 'yup';
 import useGetData from './useGetData';
 
-function useNewProduct(status, state, groupID) {
+function useNewProduct(status, state, groupID, setStatus, setState) {
   // TODO · Modifiicar el EndPoint Store de Productos para agregar el campo STATUS 11/10/2020
 
   const [error, setError] = useState(null);
@@ -55,7 +56,13 @@ function useNewProduct(status, state, groupID) {
         setError(false);
         setLoading(false);
         resetForm(formik.initialValues);
+        setStatus('USED');
+        setState('STOCK');
         setUpdate(true);
+        Toast.fire({
+          icon: 'success',
+          title: 'El producto fue creado correctamente.'
+        });
       }
     }
   });
