@@ -21,6 +21,9 @@ export const storeProduct = async (body) => {
     const res = await post('/api/product', body);
     return res.data;
   } catch (err) {
+    if (err.response.data.error === 401) {
+      location.reload();
+    }
     return err.response.data;
   }
 };
@@ -30,6 +33,9 @@ export const storeGroup = async (body) => {
     const res = await post('/api/group', body);
     return res.data;
   } catch (err) {
+    if (err.response.data.error === 401) {
+      location.reload();
+    }
     return err.response.data;
   }
 };
