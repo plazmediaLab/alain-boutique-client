@@ -15,7 +15,7 @@ function Home({ logged }) {
       {loading ? (
         <MainSkeleton />
       ) : (
-        <div className="main-container overflow-x-hidden min-h-full p-2 sm:p-3 pb-16 sm:pb-2">
+        <div className="main-container overflow-x-hidden min-h-full p-2 sm:p-3 pb-16 sm:pb-2 bg-white">
           <HomeContent />
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias error sapiente

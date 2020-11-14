@@ -41,6 +41,10 @@ export const globalStyles = css.global`
     font-size: 2rem !important;
     font-weight: medium;
   }
+  select {
+    background: transparent;
+    background-color: transparent;
+  }
 `;
 
 export default css`

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function SwitchProduct({ setState }) {
+export default function SwitchProduct({ setState, countProducts }) {
   const [value, setValue] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function SwitchProduct({ setState }) {
     <section className="grid gap-3 w-full items-center">
       <p className="text-xs uppercase text-gray-500 font-light">Mostrar productos en</p>
       <input
-        className="react-switch-checkbox hidden"
+        className="hidden"
         type="checkbox"
         name="switch-state"
         id="switch-state"
@@ -24,20 +24,20 @@ export default function SwitchProduct({ setState }) {
       />
       <label
         htmlFor="switch-state"
-        className="react-switch-label flex items-center justify-between relative cursor-pointer border border-gray-300 bg-gray-200 rounded-full w-full">
-        <span className="react-switch-button rounded-full bg-white shadow w-1/2" id="switch" />
+        className="flex items-center justify-between relative cursor-pointer border border-gray-300 bg-gray-200 rounded-full w-full">
+        <span className="switch rounded-full bg-white shadow w-1/2" id="switch" />
         <div className="grid items-center justify-around grid-cols-2 w-full text-center text-xs uppercase font-medium">
           <p
-            className={`text-alain-blue-500 transition-opacity duration-200 ${
-              !value ? 'opacity-100' : 'opacity-0'
+            className={`transition-opacity duration-200 inline-block ${
+              !value ? 'opacity-100 text-alain-blue-500' : 'opacity-25 text-alain-blue-900'
             }`}>
-            venta
+            venta &nbsp;<span className="font-light">({countProducts.active})</span>
           </p>
           <p
-            className={`text-alain-blue-900 transition-opacity duration-200 ${
-              value ? 'opacity-100' : 'opacity-0'
+            className={`transition-opacity duration-200 inline-block ${
+              value ? 'opacity-100 text-alain-blue-500' : 'opacity-25 text-alain-blue-900'
             }`}>
-            stock
+            stock &nbsp;<span className="font-light">({countProducts.stock})</span>
           </p>
         </div>
       </label>
@@ -49,7 +49,7 @@ export default function SwitchProduct({ setState }) {
           height: 34px;
           transition: background-color 0.2s;
         }
-        span {
+        span.switch {
           content: '';
           position: absolute;
           top: 3px;

@@ -1,7 +1,8 @@
 import ProductsContext from 'context/Products/ProductsContext';
+import countStateProducts from 'helpers/count-state-products';
 import { useContext, useEffect } from 'react';
 
-export default function SelectGroup({ state, setProductsList }) {
+export default function SelectGroup({ state, setProductsList, setCountProducts }) {
   const productsContext = useContext(ProductsContext);
   const { active_group = {}, products = [], groups = [], setActiveGroupMethod } = productsContext;
 
@@ -19,6 +20,10 @@ export default function SelectGroup({ state, setProductsList }) {
       setProductsList([]);
     }
   }, [products, active_group, state]);
+  useEffect(() => {
+    const count = countStateProducts(products, active_group._id);
+    setCountProducts(count);
+  }, [products, active_group]);
 
   return (
     <section className="w-full relative rounded-full">

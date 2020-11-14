@@ -13,7 +13,7 @@ export default function Layout({ children }) {
       </header>
 
       <section className="overflow-hidden">
-        <main id="main" className="text-alain-blue-800 overflow-x-hidden relative">
+        <main id="main" className="text-alain-blue-800 overflow-x-hidden relative bg-white">
           <aside id="portal_node" className="sticky top-0 left-0 w-full z-30" />
           {children}
         </main>

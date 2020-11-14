@@ -5,6 +5,7 @@ import SwitchProduct from './switch-product';
 export default function HomeContent() {
   const [productsList, setProductsList] = useState([]);
   const [state, setState] = useState('');
+  const [countProducts, setCountProducts] = useState({});
 
   const formatMoney = (number) => {
     return new Intl.NumberFormat().format(number);
@@ -12,9 +13,13 @@ export default function HomeContent() {
 
   return (
     <>
-      <SelectGroup state={state} setProductsList={setProductsList} />
+      <SelectGroup
+        state={state}
+        setProductsList={setProductsList}
+        setCountProducts={setCountProducts}
+      />
       <hr className="my-2 sm:my-3" />
-      <SwitchProduct setState={setState} />
+      <SwitchProduct setState={setState} countProducts={countProducts} />
       <ul className="my-3">
         {productsList.map((item) => (
           <li
