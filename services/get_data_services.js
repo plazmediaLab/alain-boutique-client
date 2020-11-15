@@ -21,6 +21,9 @@ export const getProducts = async (TOKEN) => {
     }
   } catch (err) {
     // console.log(err.response.data);
+    if (err.response.data.error === 401) {
+      location.reload();
+    }
     return err.response.data;
   }
 };
@@ -34,6 +37,9 @@ export const getParnerths = async (TOKEN) => {
     }
   } catch (err) {
     // console.log(err.response.data);
+    if (err.response.data.error === 401) {
+      location.reload();
+    }
     return err.response.data;
   }
 };
@@ -47,6 +53,9 @@ export const getGroups = async (TOKEN) => {
     }
   } catch (err) {
     // console.log(err.response.data);
+    if (err.response.data.error === 401) {
+      location.reload();
+    }
     return err.response.data;
   }
 };
