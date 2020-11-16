@@ -156,7 +156,7 @@ export default function FormNewProduct() {
         <button
           disabled={!active_group._id || (loading || formik.isValid ? false : true)}
           type="submit"
-          className="w-full bg-teal-500 text-white p-3 text-sm uppercase font-light tracking-wider flex justify-center">
+          className="w-full bg-teal-500 text-white p-3 text-sm uppercase font-light tracking-wider flex justify-center relative">
           {loading ? <LoadingIcon fill="#fff" w="21" h="21" /> : 'Agregar producto'}
         </button>
         {/* name price value description state status group */}

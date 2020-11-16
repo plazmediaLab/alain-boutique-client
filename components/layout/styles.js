@@ -45,6 +45,18 @@ export const globalStyles = css.global`
     background: transparent;
     background-color: transparent;
   }
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+  span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+  }
 `;
 
 export default css`

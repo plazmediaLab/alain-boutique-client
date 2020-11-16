@@ -6,6 +6,9 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      space: {
+        '05': '0.15rem'
+      },
       inset: {
         1: '1rem'
       },
@@ -30,12 +33,6 @@ module.exports = {
       boxShadow: {
         alain:
           '0px 41.7776px 33.4221px rgba(99, 91, 255, 0.0086), 0px 22.3363px 250px rgba(99, 91, 255, 0.106), 0px 12.5216px 10.0172px rgba(99, 91, 255, 0.125), 0px 6.6501px 5.32008px rgba(99, 91, 255, 0.15), 0px 2.76726px 2.21381px rgba(99, 91, 255, 0.21)',
-        btnsquare: '-10px -10px 15px #FFFFFF, 5px 5px 10px rgba(84, 128, 222, 0.15)',
-        container:
-          '0px 1px 3px rgba(187, 204, 242, 0.3), 0px 3px 12px -2px rgba(187, 204, 242, 0.8)',
-        container_inner:
-          'inset 0px 1px 3px rgba(187, 204, 242, 0.3), inset 0px 3px 12px -2px rgba(187, 204, 242, 0.8)',
-        item: '0px 1px 3px rgba(187, 204, 242, 0.3), 0px 3px 12px -2px rgba(187, 204, 242, 0.8)',
         menu: '0px 5px 15px 0px rgba(0,0,0,0.1), 0px 3px 6px 0px rgba(0,0,0,0.13)'
       },
       colors: {
