@@ -57,6 +57,9 @@ export const globalStyles = css.global`
     transform: scale(0);
     animation: ripple 600ms linear;
   }
+  ul.product-list li:not(:last-child) {
+    margin-bottom: 0.6rem;
+  }
 `;
 
 export default css`

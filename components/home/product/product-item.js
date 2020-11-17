@@ -3,13 +3,30 @@ import { useState } from 'react';
 import ProductButtonAction from './product-button-action';
 
 export default function ProductItem({ item }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const formatMoney = (number) => {
     return new Intl.NumberFormat().format(number);
   };
 
   const openItem = (e) => {
+    const currentSectionAction = e.target.parentNode.parentNode.querySelector('.section-action');
+
+    const listitemsHidden = document.querySelectorAll('.section-action');
+    listitemsHidden.forEach((element) => {
+      element.classList.add('hidden');
+      if (element.classList.contains('open') && element.id !== currentSectionAction.id) {
+        element.classList.remove('open');
+      }
+      if (element.id === currentSectionAction.id && !element.classList.contains('open')) {
+        element.classList.add('open');
+        element.classList.remove('hidden');
+      } else {
+        element.classList.remove('open');
+        element.classList.add('hidden');
+      }
+    });
+
     rippleEffect(e, 'rgba(99, 91, 255, 0.2)');
     setOpen(!open);
   };
@@ -18,8 +35,7 @@ export default function ProductItem({ item }) {
     <>
       <li
         key={item._id}
-        className="product-item grid text-sm border border-gray-300 rounded-card overflow-hidden font-light tracking-wide"
-        id="ripple-container">
+        className="grid text-sm border border-gray-300 rounded-card overflow-hidden font-light tracking-wide">
         <button className="text-gray-400 px-1 border-r border-gray-300">
           <svg
             className="w-5 h-5"
@@ -34,22 +50,43 @@ export default function ProductItem({ item }) {
             />
           </svg>
         </button>
-        <div className="section-main grid p-2 relative overflow-hidden">
+        <div className="section-main grid col-gap-1 p-2 relative overflow-hidden">
           <button
             onClick={(e) => openItem(e)}
             type="button"
             className="absolute w-full h-full"></button>
-          <article className="w-full">
+          <article className="w-full truncate pr-8">
             <h3 className="text-title-item">{item.name}</h3>
-            {/* <p className="text-description truncate w-1/2">{item.description}</p> */}
+            <p className="text-description truncate text-gray-500">{item.description}</p>
           </article>
           {/* <p>{item.status}</p> */}
-          <p className="text-price">$ {formatMoney(item.price)}</p>
-          <p className="text-price">$ {formatMoney(item.value)}</p>
+          {/* {/* <p className="text-price font-medium">$ {formatMoney(item.price)}</p> */}
+          <p className="text-price font-medium text-alain-blue-500">$ {formatMoney(item.value)}</p>
+          <svg
+            className={`w-4 h-4 mt-small text-gray-400`}
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              fillRule="evenodd"
+              d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
+              clipRule="evenodd"
+            />
+          </svg>
         </div>
-        <div className={`section-action grid items-end p-2 text-gray-500 ${open ? '' : 'hidden'}`}>
-          <article className="text-description h-full w-full">{item.description}</article>
-          <div className="button-actions flex space-x-2 items-center">
+        <div
+          className={`section-action grid items-center col-gap-2 row-gap-3 p-2 text-gray-600 hidden`}
+          id={item._id}>
+          <article className="text-description h-full w-full col-span-2">
+            <span className="font-medium">Descripción: </span>
+            {item.description}
+          </article>
+          <p
+            title="Hace 2 horas"
+            className="bg-slate-gray-100 rounded-full text-description block py-small px-3 text-slate-gray-300">
+            Hace 2 horas
+          </p>
+          <div className="button-actions flex space-x-2 items-center justify-end">
             <ProductButtonAction colorText="text-red-400">
               <svg
                 className="w-4 h-4"
@@ -84,27 +121,21 @@ export default function ProductItem({ item }) {
           </div>
         </div>
       </li>
-      <style global jsx>{`
-        li.product-item {
+      <style jsx>{`
+        li {
           grid-template-columns: auto 1fr;
           grid-template-rows: repeat(2, auto);
         }
-        li.product-item > div.section-main {
+        li div.section-main {
           grid-template-columns: 1fr auto auto;
-          grid-column-gap: 1rem;
           grid-row-gap: 0.4rem;
-        }
-        li.product-item:not(:last-child) {
-          margin-bottom: 0.4rem;
         }
         small {
           grid-column: span 2;
         }
         div.section-action {
           grid-column: 2 / 3;
-          grid-template-columns: 1fr auto;
-        }
-        li.product-item div.button-actions {
+          grid-template-columns: auto 1fr;
         }
       `}</style>
     </>

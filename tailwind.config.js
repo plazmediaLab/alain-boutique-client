@@ -6,6 +6,15 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      margin: {
+        small: '0.15rem'
+      },
+      padding: {
+        small: '0.15rem'
+      },
+      gap: {
+        small: '0.15rem'
+      },
       space: {
         '05': '0.15rem'
       },
@@ -57,6 +66,18 @@ module.exports = {
           700: '#2C2E2F',
           800: '#1D1F20',
           900: '#0F0F10'
+        },
+        'slate-gray': {
+          50: '#F7F9F9',
+          100: '#EFF2F3',
+          200: '#D7DFE2',
+          300: '#BFCBD1',
+          400: '#90A4AE',
+          500: '#607D8B',
+          600: '#56717D',
+          700: '#3A4B53',
+          800: '#2B383F',
+          900: '#1D262A'
         },
         'alain-blue': {
           50: '#F7F7FF',

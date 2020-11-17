@@ -17,7 +17,7 @@ export default function HomeContent() {
       />
       <hr className="my-2 sm:my-3" />
       <SwitchProduct setState={setState} countProducts={countProducts} />
-      <ul className="my-3">
+      <ul className="product-list my-3">
         {productsList.map((item) => (
           <ProductItem item={item} key={item._id} />
         ))}

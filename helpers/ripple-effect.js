@@ -8,13 +8,13 @@ const rippleEffect = (e, color = 'rgba(255, 255, 255, 0.3)') => {
 
   // Contenedor principal y su posición en base a la pantalla
   const main = document.getElementById('main');
-  console.log('Main X: ' + main.offsetLeft);
-  console.log('Main Y: ' + main.offsetTop);
+  // console.log('Main X: ' + main.offsetLeft);
+  // console.log('Main Y: ' + main.offsetTop);
 
   // Boton y su posición con respecto al Contenedor
   const button = e.target.parentNode;
-  console.log('Button Y: ' + button.offsetLeft);
-  console.log('Button Y: ' + button.offsetTop);
+  // console.log('Button Y: ' + button.offsetLeft);
+  // console.log('Button Y: ' + button.offsetTop);
 
   const circle = document.createElement('span');
 
