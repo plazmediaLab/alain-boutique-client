@@ -15,7 +15,7 @@ function Home({ logged }) {
       {loading ? (
         <MainSkeleton />
       ) : (
-        <div className="main-container overflow-x-hidden min-h-full p-2 sm:p-3 pb-16 sm:pb-2 pt-16 sm:pt-2 bg-white">
+        <div className="main-container overflow-x-hidden min-h-full px-2 sm:px-3 py-16 sm:py-2">
           <HomeContent />
         </div>
       )}

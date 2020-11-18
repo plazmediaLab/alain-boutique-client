@@ -17,6 +17,12 @@ export const globalStyles = css.global`
   div.main-container {
     min-height: calc(100% - 112px);
   }
+  @media (max-width: 520px) {
+    div.main-container {
+      min-height: 100vh;
+      background-color: #fff;
+    }
+  }
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -55,7 +61,7 @@ export const globalStyles = css.global`
     position: absolute;
     border-radius: 50%;
     transform: scale(0);
-    animation: ripple 600ms linear;
+    animation: ripple 700ms linear;
   }
   ul.product-list li:not(:last-child) {
     margin-bottom: 0.6rem;

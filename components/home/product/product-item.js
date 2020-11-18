@@ -39,7 +39,7 @@ export default function ProductItem({ item }) {
             />
           </svg>
         </button>
-        <div className="section-main grid col-gap-1 p-2 relative overflow-hidden">
+        <div className="section-main grid col-gap-1 p-2 relative">
           <button
             onClick={(e) => openItem(e)}
             type="button"
@@ -49,12 +49,12 @@ export default function ProductItem({ item }) {
             <p className="text-description truncate text-gray-500">{item.description}</p>
           </article>
           {/* <p>{item.status}</p> */}
-          {/* {/* <p className="text-price font-medium">$ {formatMoney(item.price)}</p> */}
+          {/* {/* <p className="text-price font-medium">${formatMoney(item.price)}</p> */}
           <div className={`price ${item.off > 0 ? 'grid grid-cols-2 items-end' : ''}`}>
             {item.off > 0 ? <p className="mr-1 text-xs text-red-500">-%{item.off}</p> : null}
             {item.value_off > 0 ? (
               <p className="text-price font-medium text-green-600">
-                $ {formatMoney(item.value_off)}
+                ${formatMoney(item.value_off)}
               </p>
             ) : null}
             <p
@@ -63,7 +63,7 @@ export default function ProductItem({ item }) {
                   ? 'text-gray-500 font-light line-through col-start-2'
                   : 'text-alain-blue-500 font-medium'
               }`}>
-              $ {formatMoney(item.value)}
+              ${formatMoney(item.value)}
             </p>
           </div>
           {item.status === 'PROMOTION' ? (
@@ -96,15 +96,19 @@ export default function ProductItem({ item }) {
         </div>
         <div className="border-r border-gray-300"></div>
         <div
-          className={`section-action grid items-center col-gap-2 row-gap-3 p-2 text-gray-600 hidden`}
+          className={`section-action text-description grid items-center col-gap-2 row-gap-4 p-2 text-slate-gray-400 hidden`}
           id={item._id}>
-          <article className="text-description h-full w-full col-span-2">
+          <article className="h-full w-full col-span-2">
+            <p className="font-medium">
+              Precio de entrada:
+              <span className="text-alain-blue-500 font-light">&nbsp; ${item.price}</span>
+            </p>
             <span className="font-medium">Descripción: </span>
             {item.description}
           </article>
           <p
             title="Hace 2 horas"
-            className="bg-slate-gray-100 rounded-full text-description block py-small px-3 text-slate-gray-300">
+            className="bg-slate-gray-100 rounded-full block py-small px-3 text-slate-gray-300">
             Hace 2 horas
           </p>
           <div className="button-actions flex space-x-2 items-center justify-end">

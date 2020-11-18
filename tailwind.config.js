@@ -7,16 +7,20 @@ module.exports = {
   theme: {
     extend: {
       margin: {
-        small: '0.15rem'
+        small: '0.15rem',
+        14: '3.5rem'
       },
       padding: {
-        small: '0.15rem'
+        small: '0.15rem',
+        14: '3.5rem'
       },
       gap: {
-        small: '0.15rem'
+        small: '0.15rem',
+        14: '3.5rem'
       },
       space: {
-        '05': '0.15rem'
+        '05': '0.15rem',
+        14: '3.5rem'
       },
       inset: {
         1: '1rem'

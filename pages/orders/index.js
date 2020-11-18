@@ -14,7 +14,7 @@ function Orders({ logged }) {
       {successAuth ? (
         <>
           <Header />
-          <div className="main-container overflow-x-hidden min-h-full p-2">
+          <div className="main-container overflow-x-hidden min-h-full px-2 sm:px-3 py-16 sm:py-2">
             <h1>Orders page...</h1>
           </div>
           <NavBar />

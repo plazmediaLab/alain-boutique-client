@@ -15,7 +15,7 @@ function Product({ logged }) {
       {loading ? (
         <MainSkeleton />
       ) : (
-        <div className="main-container overflow-x-hidden min-h-full p-2 sm:p-3 pb-16 sm:pb-2">
+        <div className="main-container overflow-x-hidden min-h-full px-2 sm:px-3 py-16 sm:py-2">
           <h2 className="text-gray-400 text-center text-xs uppercase mt-2 mb-3 font-medium tracking-wide">
             Agrega producto al grupo
           </h2>
