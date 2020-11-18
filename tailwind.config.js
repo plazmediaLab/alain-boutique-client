@@ -42,7 +42,8 @@ module.exports = {
       boxShadow: {
         alain:
           '0px 41.7776px 33.4221px rgba(99, 91, 255, 0.0086), 0px 22.3363px 250px rgba(99, 91, 255, 0.106), 0px 12.5216px 10.0172px rgba(99, 91, 255, 0.125), 0px 6.6501px 5.32008px rgba(99, 91, 255, 0.15), 0px 2.76726px 2.21381px rgba(99, 91, 255, 0.21)',
-        menu: '0px 5px 15px 0px rgba(0,0,0,0.1), 0px 3px 6px 0px rgba(0,0,0,0.13)'
+        menu: '0px 5px 15px 0px rgba(0,0,0,0.1), 0px 3px 6px 0px rgba(0,0,0,0.13)',
+        item: '0px 1px 2px 0px rgba(0, 0, 0, 0.07), 0px 2px 10px 0px rgba(0, 0, 0, 0.07)'
       },
       colors: {
         p_blue: {

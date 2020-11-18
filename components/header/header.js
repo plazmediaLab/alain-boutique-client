@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`w-full grid place-items-center sticky top-0 left-0 h-custom z-10 ${
+        className={`w-full grid place-items-center fixed sm:sticky top-0 left-0 h-custom z-10 ${
           browser ? `ffx` : ''
         }`}>
         <section className="w-full px-3 flex space-x-2">

@@ -7,6 +7,10 @@ export default function Tips() {
         <li>· Precio por defecto es 0.</li>
         <li>· Mantener en 0 el precio del producto para marcar el valor total como ganancia.</li>
         <li>· Si tu producto ya esta publicado para su venta, marcar como ACTIVO.</li>
+        <li>
+          · El PORCENTAJE de descuento se aplica sobre el VALOR del producto, este afectara el
+          valance en las ganancias.
+        </li>
       </ul>
     </>
   );

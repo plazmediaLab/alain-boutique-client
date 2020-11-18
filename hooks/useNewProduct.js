@@ -19,7 +19,8 @@ function useNewProduct(status, state, groupID, setStatus, setState) {
     state: '',
     status: '',
     value: '',
-    group: ''
+    group: '',
+    off: ''
   };
 
   const formik = useFormik({
@@ -43,6 +44,7 @@ function useNewProduct(status, state, groupID, setStatus, setState) {
       val.group = groupID;
 
       if (val.price === '') val.price = 0;
+      if (val.off === '') val.off = 0;
 
       const res = await storeProduct(val);
 

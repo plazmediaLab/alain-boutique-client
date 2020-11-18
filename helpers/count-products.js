@@ -1,4 +1,4 @@
-function countStateProducts(products, groupID) {
+export function countStateProducts(products, groupID) {
   let active = [];
   let stock = [];
   if (products.length > 0) {
@@ -8,4 +8,11 @@ function countStateProducts(products, groupID) {
   return { active: active.length, stock: stock.length };
 }
 
-export default countStateProducts;
+export function countGroupProducts(products, groupID) {
+  let productsCount = [];
+
+  if (products.length > 0) {
+    productsCount = products.filter((x) => x.group[0]._id === groupID);
+  }
+  return productsCount.length;
+}

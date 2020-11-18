@@ -1,8 +1,10 @@
 import ProductsContext from 'context/Products/ProductsContext';
-import countStateProducts from 'helpers/count-state-products';
-import { useContext, useEffect } from 'react';
+import { countGroupProducts, countStateProducts } from 'helpers/count-products';
+import { useContext, useEffect, useState } from 'react';
 
 export default function SelectGroup({ state, setProductsList, setCountProducts }) {
+  const [totalProducts, setTotalProducts] = useState(0);
+
   const productsContext = useContext(ProductsContext);
   const { active_group = {}, products = [], groups = [], setActiveGroupMethod } = productsContext;
 
@@ -22,7 +24,9 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
   }, [products, active_group, state]);
   useEffect(() => {
     const count = countStateProducts(products, active_group._id);
+    const countProducts = countGroupProducts(products, active_group._id);
     setCountProducts(count);
+    setTotalProducts(countProducts);
   }, [products, active_group]);
 
   return (
@@ -32,7 +36,7 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
         disabled={!active_group._id}
         name="groups"
         id="groups"
-        className={`rounded-full appearance-none w-full bg-transparent truncate px-8 py-2 cursor-pointer border border-gray-300 hover:border-gray-400 hover:shadow`}
+        className={`rounded-full appearance-none w-full bg-transparent truncate pr-8 py-2 cursor-pointer border border-gray-300 hover:border-gray-400 hover:shadow`}
         onChange={(e) => handleActiveGroup(e)}>
         {!active_group._id ? (
           <option value="" label="--- No tienes grupos creados ---"></option>
@@ -40,7 +44,7 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
           groups.map((group) => (
             <option
               value={group.slug}
-              defaultValue={'EMPTY'}
+              defaultValue={group.slug}
               key={group._id}
               selected={group.slug === active_group.slug}>
               {group.name}
@@ -48,6 +52,9 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
           ))
         )}
       </select>
+      {groups.length > 0 ? (
+        <p className="absolute text-slate-gray-300 text-title-item">({totalProducts})</p>
+      ) : null}
       <svg
         className="w-5 h-5 absolute pointer-events-none text-gray-400"
         fill="currentColor"
@@ -69,10 +76,17 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
           top: calc(50% - 0.6rem);
           right: 0.7rem;
         }
+        select {
+          padding-left: 3.6rem;
+        }
         select:disabled {
           opacity: 50%;
           cursor: not-allowed;
           color: #a0aec0;
+        }
+        p {
+          top: calc(50% - 0.65rem);
+          left: 2.3rem;
         }
       `}</style>
     </section>

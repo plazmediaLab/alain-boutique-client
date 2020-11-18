@@ -60,26 +60,46 @@ export default function FormNewProduct() {
                 id="status"
                 className="cursor-pointer w-full font-light tracking-wider appearance-none border-b border-gray-300 py-2 px-6 text-sm focus:border-alain-blue-500"
                 onChange={(e) => setStatus(e.target.value)}>
-                <option value="USED" selected={status === 'USED'}>
+                <option value="USED" defaultValue="USED" selected={status === 'USED'}>
                   USADO
                 </option>
-                <option value="NEW" selected={status === 'NEW'}>
+                <option value="NEW" defaultValue="NEW" selected={status === 'NEW'}>
                   NUEVO
                 </option>
+                <option
+                  value="PROMOTION"
+                  defaultValue="PROMOTION"
+                  selected={status === 'PROMOTION'}>
+                  LIQUIDACIÓN
+                </option>
               </select>
-              <svg
-                className={`w-5 h-5 absolute icon ${
-                  status === 'USED' ? 'text-gray-400' : 'text-green-500'
-                }`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              {status === 'PROMOTION' ? (
+                <svg
+                  className="w-5 h-5 absolute icon text-alain-blue-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fillRule="evenodd"
+                    d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm2.5 3a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6.207.293a1 1 0 00-1.414 0l-6 6a1 1 0 101.414 1.414l6-6a1 1 0 000-1.414zM12.5 10a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className={`w-5 h-5 absolute icon ${
+                    status === 'USED' ? 'text-gray-400' : 'text-green-500'
+                  }`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fillRule="evenodd"
+                    d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              )}
               <svg
                 className="w-5 h-5 absolute arrow text-gray-500"
                 fill="currentColor"
@@ -132,6 +152,27 @@ export default function FormNewProduct() {
               </svg>
             </div>
           </section>
+          <div className="relative">
+            <span className="off p-small rounded bg-red-200 absolute">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="#fff">
+                <path d="M16 17H5V7h11l3.55 5m-1.92-6.16C17.27 5.33 16.67 5 16 5H5c-1.1 0-2 .9-2 2v10a2 2 0 002 2h11c.67 0 1.27-.34 1.63-.85L22 12l-4.37-6.16M13.8 8L15 9.2 8.2 16 7 14.8m1.45-6.77c.78 0 1.42.64 1.42 1.42s-.64 1.42-1.42 1.42-1.42-.64-1.42-1.42.64-1.42 1.42-1.42m5.1 5.1c.78 0 1.42.64 1.42 1.42 0 .78-.64 1.42-1.42 1.42-.78 0-1.42-.64-1.42-1.42 0-.78.64-1.42 1.42-1.42z" />
+              </svg>
+            </span>
+            <input
+              type="number"
+              name="off"
+              id="off"
+              placeholder="0% descuento"
+              className="border-b border-gray-300 w-full pl-10 p-2 text-sm mb-5 focus:border-alain-blue-500"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.off}
+            />
+          </div>
           <textarea
             name="description"
             id="description"
@@ -180,6 +221,10 @@ export default function FormNewProduct() {
           top: calc(50% - 0.7rem);
           pointer-events: none;
           right: 0.5rem;
+        }
+        span.off {
+          top: 0.3rem;
+          left: 0rem;
         }
       `}</style>
     </>

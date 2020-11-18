@@ -35,7 +35,7 @@ export default function ProductItem({ item }) {
     <>
       <li
         key={item._id}
-        className="grid text-sm border border-gray-300 rounded-card overflow-hidden font-light tracking-wide">
+        className="grid text-sm rounded-card overflow-hidden font-light tracking-wide shadow-item">
         <button className="text-gray-400 px-1 border-r border-gray-300">
           <svg
             className="w-5 h-5"
@@ -61,18 +61,49 @@ export default function ProductItem({ item }) {
           </article>
           {/* <p>{item.status}</p> */}
           {/* {/* <p className="text-price font-medium">$ {formatMoney(item.price)}</p> */}
-          <p className="text-price font-medium text-alain-blue-500">$ {formatMoney(item.value)}</p>
-          <svg
-            className={`w-4 h-4 mt-small text-gray-400`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              fillRule="evenodd"
-              d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <div className={`price ${item.off > 0 ? 'grid grid-cols-2 items-end' : ''}`}>
+            {item.off > 0 ? <p className="mr-1 text-xs text-red-500">-%{item.off}</p> : null}
+            {item.value_off > 0 ? (
+              <p className="text-price font-medium text-green-600">
+                $ {formatMoney(item.value_off)}
+              </p>
+            ) : null}
+            <p
+              className={`text-price ${
+                item.value_off > 0
+                  ? 'text-gray-500 font-light line-through col-start-2'
+                  : 'text-alain-blue-500 font-medium'
+              }`}>
+              $ {formatMoney(item.value)}
+            </p>
+          </div>
+          {item.status === 'PROMOTION' ? (
+            <svg
+              className="w-4 h-4 mt-small text-alain-blue-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                fillRule="evenodd"
+                d="M5 2a2 2 0 00-2 2v14l3.5-2 3.5 2 3.5-2 3.5 2V4a2 2 0 00-2-2H5zm2.5 3a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6.207.293a1 1 0 00-1.414 0l-6 6a1 1 0 101.414 1.414l6-6a1 1 0 000-1.414zM12.5 10a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"
+                clipRule="evenodd"
+              />
+            </svg>
+          ) : (
+            <svg
+              className={`w-4 h-4 mt-small ${
+                item.status === 'NEW' ? 'text-green-400' : 'text-gray-400'
+              }`}
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                fillRule="evenodd"
+                d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
+                clipRule="evenodd"
+              />
+            </svg>
+          )}
         </div>
         <div
           className={`section-action grid items-center col-gap-2 row-gap-3 p-2 text-gray-600 hidden`}
@@ -136,6 +167,9 @@ export default function ProductItem({ item }) {
         div.section-action {
           grid-column: 2 / 3;
           grid-template-columns: auto 1fr;
+        }
+        div.price {
+          grid-template-columns: 1fr auto;
         }
       `}</style>
     </>

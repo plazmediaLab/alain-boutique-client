@@ -66,7 +66,7 @@ export default function SelectGroup() {
             groups.map((group) => (
               <option
                 value={group.slug}
-                defaultValue={'EMPTY'}
+                defaultValue={group.slug}
                 key={group._id}
                 selected={group.slug === active_group.slug}
                 className="text-alain-blue-800">
