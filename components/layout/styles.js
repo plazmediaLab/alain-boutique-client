@@ -60,6 +60,10 @@ export const globalStyles = css.global`
   ul.product-list li:not(:last-child) {
     margin-bottom: 0.6rem;
   }
+  *:disabled {
+    cursor: not-allowed !important;
+    opacity: 50%;
+  }
 `;
 
 export default css`

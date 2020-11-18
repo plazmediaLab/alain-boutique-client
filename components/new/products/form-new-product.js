@@ -203,10 +203,6 @@ export default function FormNewProduct() {
         {/* name price value description state status group */}
       </form>
       <style jsx>{`
-        button[type='submit']:disabled {
-          opacity: 50%;
-          cursor: not-allowed;
-        }
         form {
           border-top-color: ${Object.keys(active_group).length > 0
             ? active_group.color

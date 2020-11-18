@@ -1,34 +1,23 @@
-import rippleEffect from 'helpers/ripple-effect';
-import { useState } from 'react';
+import accordionListMethod from 'helpers/accordionListMethod';
 import ProductButtonAction from './product-button-action';
 
 export default function ProductItem({ item }) {
-  const [open, setOpen] = useState(false);
-
   const formatMoney = (number) => {
     return new Intl.NumberFormat().format(number);
   };
 
   const openItem = (e) => {
-    const currentSectionAction = e.target.parentNode.parentNode.querySelector('.section-action');
+    const element = e.currentTarget;
+    element.disabled = true;
 
-    const listitemsHidden = document.querySelectorAll('.section-action');
-    listitemsHidden.forEach((element) => {
-      element.classList.add('hidden');
-      if (element.classList.contains('open') && element.id !== currentSectionAction.id) {
-        element.classList.remove('open');
-      }
-      if (element.id === currentSectionAction.id && !element.classList.contains('open')) {
-        element.classList.add('open');
-        element.classList.remove('hidden');
-      } else {
-        element.classList.remove('open');
-        element.classList.add('hidden');
-      }
-    });
-
-    rippleEffect(e, 'rgba(99, 91, 255, 0.2)');
-    setOpen(!open);
+    accordionListMethod(e)
+      .then((disabled) => {
+        element.disabled = disabled;
+      })
+      .catch((err) => {
+        console.log(err);
+        element.disabled = false;
+      });
   };
 
   return (
@@ -54,7 +43,7 @@ export default function ProductItem({ item }) {
           <button
             onClick={(e) => openItem(e)}
             type="button"
-            className="absolute w-full h-full"></button>
+            className="absolute w-full h-full "></button>
           <article className="w-full truncate pr-8">
             <h3 className="text-title-item">{item.name}</h3>
             <p className="text-description truncate text-gray-500">{item.description}</p>
@@ -105,6 +94,7 @@ export default function ProductItem({ item }) {
             </svg>
           )}
         </div>
+        <div className="border-r border-gray-300"></div>
         <div
           className={`section-action grid items-center col-gap-2 row-gap-3 p-2 text-gray-600 hidden`}
           id={item._id}>

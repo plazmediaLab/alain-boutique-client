@@ -72,8 +72,8 @@ export default function FormNewGroup({ setOpenNewGroup }) {
           background-color: rgba(0, 0, 0, 0.2);
         }
         button:disabled.closeModal {
+          opacity: 100% !important;
           background-color: rgba(0, 0, 0, 0.3);
-          cursor: not-allowed;
         }
       `}</style>
     </>

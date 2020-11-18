@@ -80,8 +80,6 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
           padding-left: 3.6rem;
         }
         select:disabled {
-          opacity: 50%;
-          cursor: not-allowed;
           color: #a0aec0;
         }
         p {

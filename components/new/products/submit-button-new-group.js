@@ -20,12 +20,6 @@ export default function SubmitButtonNewGroup({ disabled, loading }) {
           Agregar
         </>
       )}
-      <style jsx>{`
-        button:disabled {
-          opacity: 50%;
-          cursor: not-allowed;
-        }
-      `}</style>
     </button>
   );
 }

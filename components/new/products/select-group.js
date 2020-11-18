@@ -99,11 +99,6 @@ export default function SelectGroup() {
           : null}
       </div>
       <style jsx>{`
-        button:disabled,
-        select:disabled {
-          opacity: 50%;
-          cursor: not-allowed;
-        }
         select.group {
           color: ${!active_group._id ? '#a0aec0' : active_group.color};
           background-color: transparent;
