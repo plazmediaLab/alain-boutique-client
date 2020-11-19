@@ -1,20 +1,19 @@
-import { useState } from 'react';
-import useGetData from './useGetData';
-import { destroyGoup } from 'services/delete_data_services';
 import { SwalError, Toast } from 'helpers/toast-swal';
+import { useState } from 'react';
+import { destroyProduct } from 'services/delete_data_services';
 import Swal from 'sweetalert2';
+import useGetData from './useGetData';
 
-function useGroupDestroy() {
+function useProductDestroy() {
   // const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loadingDestroy, setLoading] = useState(false);
 
   const [, , setUpdate] = useGetData();
 
-  const groupDestroy = async (ID) => {
+  const productDestoy = async (ID) => {
     Swal.fire({
       title: '¿Estas seguro de querer eliminar este producto?',
-      text:
-        'Todos los productor relacionados con este, tambíen serán eliminados - !Esta acción no podra ser revertida!',
+      text: '!Esta acción no podra ser revertida!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#635BFF',
@@ -28,7 +27,8 @@ function useGroupDestroy() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         setLoading(true);
-        const res = await destroyGoup(ID);
+
+        const res = await destroyProduct(ID);
 
         if (!res.ok) {
           setLoading(false);
@@ -47,13 +47,7 @@ function useGroupDestroy() {
     });
   };
 
-  return [
-    groupDestroy,
-    loading,
-    {
-      /*error*/
-    }
-  ];
+  return [productDestoy, loadingDestroy /*, error*/];
 }
 
-export default useGroupDestroy;
+export default useProductDestroy;

@@ -1,7 +1,7 @@
 import ErrorMsn from 'components/resources/error-msn';
 import LoadingIcon from 'components/resources/loading-icon';
 import ProductsContext from 'context/Products/ProductsContext';
-import useNewProduct from 'hooks/useNewProduct';
+import useProductNew from 'hooks/useProductNew';
 import { useContext, useState } from 'react';
 import MessageEmptyGroup from './message-empty-group';
 
@@ -12,7 +12,7 @@ export default function FormNewProduct() {
   const productsContext = useContext(ProductsContext);
   const { active_group = {} } = productsContext;
 
-  const [formik, loading] = useNewProduct(status, state, active_group._id, setStatus, setState);
+  const [formik, loading] = useProductNew(status, state, active_group._id, setStatus, setState);
 
   return (
     <>

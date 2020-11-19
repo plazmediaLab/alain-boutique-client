@@ -26,3 +26,15 @@ export const destroyGoup = async (ID) => {
     return err.response.data;
   }
 };
+
+export const destroyProduct = async (ID) => {
+  try {
+    const res = await destroy(`/api/product/${ID}`);
+    return res.data;
+  } catch (err) {
+    if (err.response.data.error === 401) {
+      location.reload();
+    }
+    return err.response.data;
+  }
+};

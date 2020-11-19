@@ -1,7 +1,11 @@
+import LoadingIcon from 'components/resources/loading-icon';
 import accordionListMethod from 'helpers/accordionListMethod';
+import useProductDestroy from 'hooks/useProductDestroy';
 import ProductButtonAction from './product-button-action';
 
 export default function ProductItem({ item }) {
+  const [productDestoy, loadingDestroy] = useProductDestroy();
+
   const formatMoney = (number) => {
     return new Intl.NumberFormat().format(number);
   };
@@ -18,6 +22,19 @@ export default function ProductItem({ item }) {
         console.log(err);
         element.disabled = false;
       });
+  };
+
+  const showState = (state) => {
+    let stateWord;
+    switch (state) {
+      case 'ACTIVE':
+        stateWord = 'A stock';
+        break;
+      case 'STOCK':
+        stateWord = 'A venta';
+        break;
+    }
+    return stateWord;
   };
 
   return (
@@ -43,7 +60,8 @@ export default function ProductItem({ item }) {
           <button
             onClick={(e) => openItem(e)}
             type="button"
-            className="absolute w-full h-full "></button>
+            className="absolute w-full h-full "
+            disabled={loadingDestroy}></button>
           <article className="w-full truncate pr-8">
             <h3 className="text-title-item">{item.name}</h3>
             <p className="text-description truncate text-gray-500">{item.description}</p>
@@ -112,22 +130,29 @@ export default function ProductItem({ item }) {
             Hace 2 horas
           </p>
           <div className="button-actions flex space-x-2 items-center justify-end">
-            <ProductButtonAction colorText="text-red-400">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                />
-              </svg>
+            <ProductButtonAction
+              colorText="text-red-400"
+              onClick={() => productDestoy(item._id)}
+              disabled={loadingDestroy}>
+              {loadingDestroy ? (
+                <LoadingIcon h="16" w="16" fill="#90A4AE" />
+              ) : (
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              )}
             </ProductButtonAction>
-            <ProductButtonAction colorText="text-alain-blue-500">
+            <ProductButtonAction colorText="text-alain-blue-500" disabled={loadingDestroy}>
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -142,7 +167,9 @@ export default function ProductItem({ item }) {
                 />
               </svg>
             </ProductButtonAction>
-            <ProductButtonAction>A venta</ProductButtonAction>
+            <ProductButtonAction disabled={loadingDestroy}>
+              {showState(item.state)}
+            </ProductButtonAction>
           </div>
         </div>
       </li>

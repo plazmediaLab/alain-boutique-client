@@ -5,7 +5,7 @@ import { storeProduct } from 'services/post_data_services';
 import * as Yup from 'yup';
 import useGetData from './useGetData';
 
-function useNewProduct(status, state, groupID, setStatus, setState) {
+function useProductNew(status, state, groupID, setStatus, setState) {
   // TODO · Modifiicar el EndPoint Store de Productos para agregar el campo STATUS 11/10/2020
 
   const [error, setError] = useState(null);
@@ -72,4 +72,4 @@ function useNewProduct(status, state, groupID, setStatus, setState) {
   return [formik, loading, error];
 }
 
-export default useNewProduct;
+export default useProductNew;

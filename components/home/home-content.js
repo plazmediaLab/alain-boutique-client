@@ -1,12 +1,16 @@
+import useProductDestroy from 'hooks/useProductDestroy';
 import { useState } from 'react';
 import ProductItem from './product/product-item';
 import SelectGroup from './select-group';
 import SwitchProduct from './switch-product';
+import ReactDOM from 'react-dom';
 
 export default function HomeContent() {
   const [productsList, setProductsList] = useState([]);
   const [state, setState] = useState('');
   const [countProducts, setCountProducts] = useState({});
+
+  const [, loadingDestroy] = useProductDestroy();
 
   return (
     <>
@@ -22,6 +26,11 @@ export default function HomeContent() {
           <ProductItem item={item} key={item._id} />
         ))}
       </ul>
+      {loadingDestroy &&
+        ReactDOM.createPortal(
+          <div className="w-full h-full bg-slate-gray-100 absolute top-0 z-50 opacity-25"></div>,
+          document.getElementById('main')
+        )}
     </>
   );
 }

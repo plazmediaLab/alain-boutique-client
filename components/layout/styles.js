@@ -34,7 +34,7 @@ export const globalStyles = css.global`
   .swalTitle {
     font-size: 1.2rem;
   }
-  #swal2-content {
+  .swal2-content {
     font-size: 1rem !important;
     font-weight: lighter;
   }
