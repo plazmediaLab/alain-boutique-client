@@ -1,18 +1,16 @@
 import ComponentPortalRender from 'components/resources/ComponentPortalRender';
 import LoadingIcon from 'components/resources/loading-icon';
 import accordionListMethod from 'helpers/accordionListMethod';
-import timeFormat from 'helpers/timeFormat';
 import useProductDestroy from 'hooks/useProductDestroy';
 import useProductUpdate from 'hooks/useProductUpdate';
-import useTimeAgo from 'hooks/useTimeAgo';
 import ProductButtonAction from './product-button-action';
+import timeAgoDAYJS, { dateFormat } from 'helpers/timeAgoDAYJS';
 
 export default function ProductItem({ item, productsActive }) {
   // TODO · TimeStamp a la fecha de creación 11/19/2020
 
   const [productDestoy, loadingDestroy] = useProductDestroy();
   const [productUpdate, loadingUpdate, state] = useProductUpdate(item.state);
-  const timeAgo = useTimeAgo(item.createdAt);
 
   const formatMoney = (number) => {
     return new Intl.NumberFormat().format(number);
@@ -123,8 +121,8 @@ export default function ProductItem({ item, productsActive }) {
           </article>
           <p
             className="bg-slate-gray-100 rounded-full block py-small px-3 text-slate-gray-300"
-            title={`Creado: ${timeFormat(item.createdAt)}`}>
-            {timeAgo}
+            title={`Creado: ${dateFormat(item.createdAt)}`}>
+            {timeAgoDAYJS(item.createdAt)}
           </p>
           <div className="button-actions flex space-x-2 items-center justify-end">
             <ProductButtonAction
