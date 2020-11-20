@@ -19,7 +19,7 @@ export default function HomeContent() {
       <SwitchProduct setState={setState} countProducts={countProducts} />
       <ul className="product-list my-3">
         {productsList.map((item) => (
-          <ProductItem item={item} key={item._id} />
+          <ProductItem item={item} key={item._id} productsActive={state} />
         ))}
       </ul>
     </>

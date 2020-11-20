@@ -13,13 +13,22 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
     setActiveGroupMethod({ color, _id, slug });
   };
 
+  const activeProducts = () => {
+    return products.filter(
+      (x) => x.state === 'ACTIVE' && x.group[0]._id === active_group._id && x.state !== 'SOLD'
+    );
+  };
+  const totalProductsActiveGroup = () => {
+    return products.filter((x) => x.group[0]._id === active_group._id && x.state !== 'SOLD');
+  };
+
   useEffect(() => {
     if (products.length > 0) {
-      setProductsList(
-        products.filter(
-          (x) => x.state === state && x.group[0]._id === active_group._id && x.state !== 'SOLD'
-        )
-      );
+      if (!state) {
+        setProductsList(activeProducts());
+      } else {
+        setProductsList(totalProductsActiveGroup());
+      }
     } else {
       setProductsList([]);
     }

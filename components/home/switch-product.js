@@ -4,7 +4,7 @@ export default function SwitchProduct({ setState, countProducts }) {
   const [value, setValue] = useState(false);
 
   useEffect(() => {
-    setState(!value ? 'ACTIVE' : 'STOCK');
+    setState(value);
   }, [value]);
 
   const handleChange = () => {
@@ -13,7 +13,7 @@ export default function SwitchProduct({ setState, countProducts }) {
 
   return (
     <section className="grid gap-3 w-full items-center">
-      <p className="text-xs uppercase text-gray-500 font-light">Mostrar productos en</p>
+      <p className="text-xs uppercase text-gray-500 font-light">Mostrar productos</p>
       <input
         className="hidden"
         type="checkbox"
@@ -31,13 +31,13 @@ export default function SwitchProduct({ setState, countProducts }) {
             className={`transition-opacity duration-200 inline-block ${
               !value ? 'opacity-100 text-alain-blue-500' : 'opacity-25 text-alain-blue-900'
             }`}>
-            venta &nbsp;<span className="font-light">({countProducts.active})</span>
+            En venta &nbsp;<span className="font-light">({countProducts.active})</span>
           </p>
           <p
             className={`transition-opacity duration-200 inline-block ${
               value ? 'opacity-100 text-alain-blue-500' : 'opacity-25 text-alain-blue-900'
             }`}>
-            stock &nbsp;<span className="font-light">({countProducts.stock})</span>
+            Total &nbsp;<span className="font-light">({countProducts.total})</span>
           </p>
         </div>
       </label>

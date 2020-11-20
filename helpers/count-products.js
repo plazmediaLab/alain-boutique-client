@@ -1,11 +1,13 @@
 export function countStateProducts(products, groupID) {
   let active = [];
-  let stock = [];
+  let total = [];
   if (products.length > 0) {
-    active = products.filter((x) => x.state === 'ACTIVE' && x.group[0]._id === groupID);
-    stock = products.filter((x) => x.state === 'STOCK' && x.group[0]._id === groupID);
+    active = products.filter(
+      (x) => x.state === 'ACTIVE' && x.group[0]._id === groupID && x.status !== 'SOLD'
+    );
+    total = products.filter((x) => x.group[0]._id === groupID && x.status !== 'SOLD');
   }
-  return { active: active.length, stock: stock.length };
+  return { active: active.length, total: total.length };
 }
 
 export function countGroupProducts(products, groupID) {

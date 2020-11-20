@@ -37,6 +37,9 @@ function useProductUpdate(STATE) {
 
     if (res.ok) {
       setUpdate(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 700);
     }
   };
 
@@ -46,7 +49,7 @@ function useProductUpdate(STATE) {
     } else {
       setState('A venta');
     }
-  }, [state]);
+  }, [STATE]);
 
   return [productUpdate, loadingUpdate, state];
 }
