@@ -36,7 +36,9 @@ export default function ProductItem({ item, productsActive }) {
     <>
       <li
         key={item._id}
-        className="grid text-sm rounded-card overflow-hidden font-light tracking-wide shadow-item">
+        className={`grid text-sm rounded-card overflow-hidden font-light tracking-wide shadow-item ${
+          productsActive ? 'border-l-4' : ''
+        } ${item.state === 'ACTIVE' ? 'border-yellow-500' : 'border-gray-400'}`}>
         <button className="text-gray-400 px-1 border-r border-gray-300">
           <svg
             className="w-5 h-5"
@@ -105,20 +107,6 @@ export default function ProductItem({ item, productsActive }) {
                 />
               </svg>
             )}
-            {productsActive ? (
-              <svg
-                className={`w-4 h-4 mt-small ${item.state === 'ACTIVE' && 'text-yellow-500'}`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                <path
-                  fillRule="evenodd"
-                  d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : null}
           </div>
         </div>
         <div className="border-r border-gray-300"></div>
@@ -161,7 +149,7 @@ export default function ProductItem({ item, productsActive }) {
                 </svg>
               )}
             </ProductButtonAction>
-            <ProductButtonAction colorText="text-alain-blue-500">
+            <ProductButtonAction colorText="text-alain-blue-500" disabled={true}>
               <svg
                 className="w-4 h-4"
                 fill="none"

@@ -49,7 +49,7 @@ const withAuth = (WrappedComponent) => {
     if (ctx.req) {
       const token = getCookie('A-CSRF-COOKIE', ctx.req);
       const valid = new authToken(token).isValid;
-      const url = ctx.req.url.replace('/', '%2F');
+      const url = ctx.req.url.replace(/([/])/g, '%2F');
       if (!valid) {
         ctx.res.writeHead(302, { Location: `/login?access=${url}&auth=unauthorized` });
         ctx.res.end();
