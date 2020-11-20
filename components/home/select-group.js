@@ -16,7 +16,9 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
   useEffect(() => {
     if (products.length > 0) {
       setProductsList(
-        products.filter((x) => x.state === state && x.group[0]._id === active_group._id)
+        products.filter(
+          (x) => x.state === state && x.group[0]._id === active_group._id && x.state !== 'SOLD'
+        )
       );
     } else {
       setProductsList([]);

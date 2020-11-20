@@ -10,7 +10,7 @@ function accordionListMethod(e) {
         new Error('Error al ejecutar la acción OPEN de la lista de productos, intenta nuevamente.')
       );
 
-    if (currentSectionAction) rippleEffect(e, 'rgba(99, 91, 255, 0.2)');
+    if (currentSectionAction) rippleEffect(e, 'rgba(144, 164, 174, 0.18)');
 
     listitemsHidden.forEach((element) => {
       element.classList.add('hidden');

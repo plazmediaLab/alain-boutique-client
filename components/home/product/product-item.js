@@ -1,10 +1,13 @@
+import ComponentPortalRender from 'components/resources/ComponentPortalRender';
 import LoadingIcon from 'components/resources/loading-icon';
 import accordionListMethod from 'helpers/accordionListMethod';
 import useProductDestroy from 'hooks/useProductDestroy';
+import useProductUpdate from 'hooks/useProductUpdate';
 import ProductButtonAction from './product-button-action';
 
 export default function ProductItem({ item }) {
   const [productDestoy, loadingDestroy] = useProductDestroy();
+  const [productUpdate, loadingUpdate, state] = useProductUpdate(item.state);
 
   const formatMoney = (number) => {
     return new Intl.NumberFormat().format(number);
@@ -22,19 +25,6 @@ export default function ProductItem({ item }) {
         console.log(err);
         element.disabled = false;
       });
-  };
-
-  const showState = (state) => {
-    let stateWord;
-    switch (state) {
-      case 'ACTIVE':
-        stateWord = 'A stock';
-        break;
-      case 'STOCK':
-        stateWord = 'A venta';
-        break;
-    }
-    return stateWord;
   };
 
   return (
@@ -152,7 +142,7 @@ export default function ProductItem({ item }) {
                 </svg>
               )}
             </ProductButtonAction>
-            <ProductButtonAction colorText="text-alain-blue-500" disabled={loadingDestroy}>
+            <ProductButtonAction colorText="text-alain-blue-500">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -167,12 +157,18 @@ export default function ProductItem({ item }) {
                 />
               </svg>
             </ProductButtonAction>
-            <ProductButtonAction disabled={loadingDestroy}>
-              {showState(item.state)}
+            <ProductButtonAction
+              disabled={loadingUpdate}
+              onClick={() => productUpdate(item._id)}
+              colorText={item.state === 'STOCK' ? 'text-alain-blue-500' : ''}>
+              {loadingUpdate ? <LoadingIcon h="16" w="16" fill="#90A4AE" /> : state}
             </ProductButtonAction>
           </div>
         </div>
       </li>
+      <ComponentPortalRender render={loadingUpdate || loadingDestroy}>
+        <div className="w-full h-full bg-slate-gray-100 absolute top-0 z-50 opacity-25"></div>
+      </ComponentPortalRender>
       <style jsx>{`
         li {
           grid-template-columns: auto 1fr;
