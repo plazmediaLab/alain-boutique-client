@@ -1,7 +1,12 @@
-import { useEffect, useState } from 'react';
+import ProductsContext from 'context/Products/ProductsContext';
+import Link from 'next/link';
+import { useContext, useEffect, useState } from 'react';
 
-export default function SwitchProduct({ setState, countProducts }) {
+export default function SwitchProduct({ setState, countProducts, countProductsSold }) {
   const [value, setValue] = useState(false);
+
+  const productsContext = useContext(ProductsContext);
+  const { active_group = {} } = productsContext;
 
   useEffect(() => {
     setState(value);
@@ -13,7 +18,7 @@ export default function SwitchProduct({ setState, countProducts }) {
 
   return (
     <section className="grid gap-3 w-full items-center">
-      <p className="text-xs uppercase text-gray-500 font-light">Mostrar productos</p>
+      <p className="text-xs uppercase text-gray-500 font-light">Productos</p>
       <input
         className="hidden"
         type="checkbox"
@@ -41,9 +46,18 @@ export default function SwitchProduct({ setState, countProducts }) {
           </p>
         </div>
       </label>
+      {countProductsSold > 0 ? (
+        <Link href={`/products/sold/${active_group.slug}`}>
+          <a className="text-alain-blue-500 text-label uppercase py-2">
+            {countProductsSold} Vendido(s)
+          </a>
+        </Link>
+      ) : (
+        <p className="text-gray-500 text-label uppercase">0 Vendido(s)</p>
+      )}
       <style jsx>{`
         section {
-          grid-template-columns: auto 1fr;
+          grid-template-columns: auto 1fr auto;
         }
         label {
           height: 34px;

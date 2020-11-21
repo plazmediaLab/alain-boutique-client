@@ -1,8 +1,17 @@
 import ProductsContext from 'context/Products/ProductsContext';
-import { countGroupProducts, countStateProducts } from 'helpers/count-products';
+import {
+  countGroupProducts,
+  countGroupProductsSold,
+  countStateProducts
+} from 'helpers/count-products';
 import { useContext, useEffect, useState } from 'react';
 
-export default function SelectGroup({ state, setProductsList, setCountProducts }) {
+export default function SelectGroup({
+  setCountProducts,
+  setCountProductsSold,
+  setProductsList,
+  state
+}) {
   const [totalProducts, setTotalProducts] = useState(0);
 
   const productsContext = useContext(ProductsContext);
@@ -36,8 +45,10 @@ export default function SelectGroup({ state, setProductsList, setCountProducts }
   useEffect(() => {
     const count = countStateProducts(products, active_group._id);
     const countProducts = countGroupProducts(products, active_group._id);
+    const countProductsSold = countGroupProductsSold(products, active_group._id);
     setCountProducts(count);
     setTotalProducts(countProducts);
+    setCountProductsSold(countProductsSold);
   }, [products, active_group]);
 
   return (

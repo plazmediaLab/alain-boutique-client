@@ -1,31 +1,15 @@
 import { SwalError } from 'helpers/toast-swal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { updateProduct } from 'services/update_data_services';
 import useGetData from './useGetData';
 
-function useProductUpdate(STATE) {
+function useProductUpdate() {
   // const [error, setError] = useState(null);
-  const [state, setState] = useState('');
   const [loadingUpdate, setLoading] = useState(false);
 
   const [, , setUpdate] = useGetData();
 
-  let newState = () => {
-    let result;
-    switch (STATE) {
-      case 'ACTIVE':
-        result = 'STOCK';
-        break;
-      case 'STOCK':
-        result = 'ACTIVE';
-        break;
-    }
-    return result;
-  };
-
-  const productUpdate = async (ID) => {
-    const body = { state: newState() };
-
+  const productUpdate = async (ID, body) => {
     setLoading(true);
 
     const res = await updateProduct(ID, body);
@@ -37,21 +21,11 @@ function useProductUpdate(STATE) {
 
     if (res.ok) {
       setUpdate(true);
-      setTimeout(() => {
-        setLoading(false);
-      }, 700);
+      console.log(res);
     }
   };
 
-  useEffect(() => {
-    if (STATE === 'ACTIVE') {
-      setState('A stock');
-    } else {
-      setState('A venta');
-    }
-  }, [STATE]);
-
-  return [productUpdate, loadingUpdate, state];
+  return [productUpdate, loadingUpdate];
 }
 
 export default useProductUpdate;
