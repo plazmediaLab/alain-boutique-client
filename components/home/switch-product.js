@@ -33,13 +33,13 @@ export default function SwitchProduct({ setState, countProducts, countProductsSo
         <span className="switch rounded-full bg-white shadow w-1/2" id="switch" />
         <div className="grid items-center justify-around grid-cols-2 w-full text-center text-xs uppercase font-medium">
           <p
-            className={`transition-opacity duration-200 inline-block ${
+            className={`transition-opacity duration-200 inline-block ml-1 sm:m-0 ${
               !value ? 'opacity-100 text-alain-blue-500' : 'opacity-25 text-alain-blue-900'
             }`}>
             En venta &nbsp;<span className="font-light">({countProducts.active})</span>
           </p>
           <p
-            className={`transition-opacity duration-200 inline-block ${
+            className={`transition-opacity duration-200 inline-block mr-1 sm:m-0 ${
               value ? 'opacity-100 text-alain-blue-500' : 'opacity-25 text-alain-blue-900'
             }`}>
             Total &nbsp;<span className="font-light">({countProducts.total})</span>

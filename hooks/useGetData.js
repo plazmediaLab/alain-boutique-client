@@ -8,7 +8,8 @@ export default function useGetData() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [update, setUpdate] = useState(false);
+  const [updateAll, setUpdateAll] = useState(false);
+  const [updateProducts, setUpdateProducts] = useState(false);
 
   const productsContext = useContext(ProductsContext);
   const {
@@ -22,23 +23,15 @@ export default function useGetData() {
 
   const TOKEN = getCookie('A-CSRF-COOKIE');
 
-  const handleData = async () => {
+  const handleDataGroups = async () => {
     if (!success) setLoading(true);
 
-    const resProducts = await getProducts(TOKEN);
-    const resParnerths = await getParnerths(TOKEN);
     const resGropus = await getGroups(TOKEN);
 
-    if (!resProducts.ok || !resParnerths.ok || !resGropus.ok) {
+    if (!resGropus.ok) {
       setError(true);
     }
 
-    if (resProducts.ok) {
-      setProductsMethod(resProducts.products);
-    }
-    if (resParnerths.ok) {
-      setParnerthsMethod(resParnerths.groups);
-    }
     if (resGropus.ok) {
       setGroupsMethod(resGropus.groups);
       if (resGropus.groups.length > 0) {
@@ -52,15 +45,64 @@ export default function useGetData() {
     if (!error) {
       setLoading(false);
       successMethod();
-      setUpdate(false);
+      setUpdateAll(false);
+    }
+  };
+
+  const handleDataParnerths = async () => {
+    if (!success) setLoading(true);
+
+    const resParnerths = await getParnerths(TOKEN);
+
+    if (!resParnerths.ok) {
+      setError(true);
+    }
+
+    if (resParnerths.ok) {
+      setParnerthsMethod(resParnerths.groups);
+    }
+
+    if (!error) {
+      setLoading(false);
+      successMethod();
+      setUpdateAll(false);
+    }
+  };
+
+  const handleDataProducts = async () => {
+    if (!success) setLoading(true);
+
+    const resProducts = await getProducts(TOKEN);
+
+    if (!resProducts.ok) {
+      setError(true);
+    }
+
+    if (resProducts.ok) {
+      setProductsMethod(resProducts.products);
+    }
+
+    if (!error) {
+      setLoading(false);
+      successMethod();
+      setUpdateAll(false);
+      setUpdateProducts(false);
     }
   };
 
   useEffect(() => {
-    if (!success || update) {
-      handleData();
+    if (!success || updateAll) {
+      handleDataGroups();
+      handleDataParnerths();
+      handleDataProducts();
     }
-  }, [update]);
+  }, [updateAll]);
 
-  return [loading, error, setUpdate];
+  useEffect(() => {
+    if (!success || updateProducts) {
+      handleDataProducts();
+    }
+  }, [updateProducts]);
+
+  return [loading, error, setUpdateAll, setUpdateProducts];
 }

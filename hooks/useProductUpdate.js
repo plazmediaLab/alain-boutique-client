@@ -7,7 +7,7 @@ function useProductUpdate() {
   // const [error, setError] = useState(null);
   const [loadingUpdate, setLoading] = useState(false);
 
-  const [, , setUpdate] = useGetData();
+  const [, , setUpdateAll] = useGetData();
 
   const productUpdate = async (ID, body) => {
     setLoading(true);
@@ -20,7 +20,7 @@ function useProductUpdate() {
     }
 
     if (res.ok) {
-      setUpdate(true);
+      setUpdateAll(true);
       console.log(res);
     }
   };

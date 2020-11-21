@@ -8,7 +8,7 @@ function useProductUpdateState(STATE) {
   const [state, setState] = useState('');
   const [loadingUpdateState, setLoading] = useState(false);
 
-  const [, , setUpdate] = useGetData();
+  const [, , setUpdateAll, setUpdateProducts] = useGetData();
 
   let newState = () => {
     let result;
@@ -36,7 +36,7 @@ function useProductUpdateState(STATE) {
     }
 
     if (res.ok) {
-      setUpdate(true);
+      setUpdateProducts(true);
       setTimeout(() => {
         setLoading(false);
       }, 700);

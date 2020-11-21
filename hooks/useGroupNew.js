@@ -10,7 +10,7 @@ function useGroupNew(setOpenNewGroup, color) {
   // const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const [, , setUpdate] = useGetData();
+  const [, , setUpdateAll] = useGetData();
 
   const formik = useFormik({
     initialValues: {
@@ -33,7 +33,7 @@ function useGroupNew(setOpenNewGroup, color) {
       }
 
       if (res.ok) {
-        setUpdate(true);
+        setUpdateAll(true);
         setLoading(false);
         setOpenNewGroup(false);
         Toast.fire({

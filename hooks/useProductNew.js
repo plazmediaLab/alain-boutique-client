@@ -10,7 +10,7 @@ function useProductNew(status, state, groupID, setStatus, setState) {
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [, , setUpdate] = useGetData();
+  const [, , setUpdateAll] = useGetData();
 
   const initialValues = {
     description: '',
@@ -60,7 +60,7 @@ function useProductNew(status, state, groupID, setStatus, setState) {
         resetForm(formik.initialValues);
         setStatus('USED');
         setState('STOCK');
-        setUpdate(true);
+        setUpdateAll(true);
         Toast.fire({
           icon: 'success',
           title: 'El producto fue creado correctamente.'

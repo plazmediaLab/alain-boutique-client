@@ -8,7 +8,7 @@ function useGroupDestroy() {
   // const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const [, , setUpdate] = useGetData();
+  const [, , setUpdateAll] = useGetData();
 
   const groupDestroy = async (ID) => {
     Swal.fire({
@@ -37,7 +37,7 @@ function useGroupDestroy() {
 
         if (res.ok) {
           setLoading(false);
-          setUpdate(true);
+          setUpdateAll(true);
           Toast.fire({
             icon: 'success',
             title: 'El grupo se elimino correctamente.'
