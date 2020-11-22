@@ -34,7 +34,7 @@ function ProductsGroupsSold({ logged }) {
             color={active_group.color}
             productsSold={countGroupProductsSold(products, active_group._id)}
           />
-          <ProductList />
+          <ProductList active_group={active_group} products={products} />
         </div>
       )}
       <NavBar />
