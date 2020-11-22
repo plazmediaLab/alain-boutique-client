@@ -1,6 +1,10 @@
+import LoadingIcon from 'components/resources/loading-icon';
 import { dateFormat } from 'helpers/timeAgoDAYJS';
+import useProductUpdate from 'hooks/useProductUpdate';
 
 export default function ProductSoldItem({ item }) {
+  const [productUpdate, loadingUpdate] = useProductUpdate();
+
   return (
     <li
       // key={item._id}
@@ -82,7 +86,12 @@ export default function ProductSoldItem({ item }) {
           {dateFormat(item.sold_date)}
         </time>
       </section>
-      <button className="text-xs text-red-400 pt-4 pr-6">Cancelar venta</button>
+      <button
+        className="text-xs text-red-400 pt-4 pr-6"
+        disabled={loadingUpdate}
+        onClick={() => productUpdate(item._id, { state: 'STOCK' })}>
+        {loadingUpdate ? <LoadingIcon h="13" w="13" fill="#607D8B" /> : 'Cancelar venta'}
+      </button>
       <style global jsx>{`
         div.section-main-sold {
           grid-template-columns: 1fr auto;
