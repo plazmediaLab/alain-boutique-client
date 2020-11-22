@@ -100,7 +100,9 @@ export default function SelectGroup() {
       </div>
       <style jsx>{`
         select.group {
-          color: ${!active_group._id ? '#a0aec0' : active_group.color};
+          color: ${!active_group._id || active_group.color === '#E2E8f0'
+            ? '#a0aec0'
+            : active_group.color};
           background-color: transparent;
         }
         div.container {

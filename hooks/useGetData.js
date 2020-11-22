@@ -10,6 +10,7 @@ export default function useGetData() {
   const [error, setError] = useState(null);
   const [updateAll, setUpdateAll] = useState(false);
   const [updateProducts, setUpdateProducts] = useState(false);
+  const [updateParnerths, setUpdateParnerths] = useState(false);
 
   const productsContext = useContext(ProductsContext);
   const {
@@ -65,7 +66,7 @@ export default function useGetData() {
     if (!error) {
       setLoading(false);
       successMethod();
-      setUpdateAll(false);
+      setUpdateParnerths(false);
     }
   };
 
@@ -85,7 +86,6 @@ export default function useGetData() {
     if (!error) {
       setLoading(false);
       successMethod();
-      setUpdateAll(false);
       setUpdateProducts(false);
     }
   };
@@ -95,6 +95,7 @@ export default function useGetData() {
       handleDataGroups();
       handleDataParnerths();
       handleDataProducts();
+      setUpdateAll(false);
     }
   }, [updateAll]);
 
@@ -104,5 +105,11 @@ export default function useGetData() {
     }
   }, [updateProducts]);
 
-  return [loading, error, setUpdateAll, setUpdateProducts];
+  useEffect(() => {
+    if (!success || updateParnerths) {
+      handleDataParnerths();
+    }
+  }, [updateParnerths]);
+
+  return [loading, error, setUpdateAll, setUpdateProducts, setUpdateParnerths];
 }

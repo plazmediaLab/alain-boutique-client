@@ -9,18 +9,16 @@ export default function GroupListHeader({ slug, color, productsSold }) {
   };
 
   return (
-    <section className="flex space-x-3 my-3 items-center">
-      <h1 className="flex-1 font-light">
-        <svg
-          className="group w-6 h-6 inline-block mr-1 text-gray-400"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-        </svg>
-        {formatSlug(slug[0])}
-      </h1>
-      <div className="flex items-center space-x-1" title="Color de etiqueta">
+    <section className="flex my-3 items-center truncate">
+      <svg
+        className="group-title w-6 mr-1 text-gray-400"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+      </svg>
+      <h1 className="font-medium truncate pr-2 flex-1">{formatSlug(slug[0])}</h1>
+      <div className="flex items-center space-x-1 ml-2" title="Color de etiqueta">
         <p className="text-gray-500 text-description">
           ( {productsSold} ) {productsSold > 1 ? 'vendidos' : 'vendido'}
         </p>
@@ -28,7 +26,7 @@ export default function GroupListHeader({ slug, color, productsSold }) {
       <button
         disabled={disabled}
         onClick={sortList}
-        className={`bg-alain-blue-100 text-alain-blue-300 p-1 rounded-card ${
+        className={`bg-alain-blue-100 text-alain-blue-300 p-1 rounded-card ml-2 ${
           !disabled && 'hover:bg-alain-blue-500 hover:text-white'
         }`}>
         <svg
@@ -44,7 +42,8 @@ export default function GroupListHeader({ slug, color, productsSold }) {
         </svg>
       </button>
       <style jsx>{`
-        svg.group {
+        svg.group-title,
+        h1 {
           color: ${color};
         }
         button:active {

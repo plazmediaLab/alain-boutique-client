@@ -29,24 +29,6 @@ export default function ProductSoldItem({ item }) {
           </div>
         </aside>
       </div>
-      <time
-        dateTime={item.createAt}
-        className="py-small pl-1 pr-3 rounded-full text-description bg-background text-slate-gray-400 my-2 inline-block">
-        <svg
-          className="w-4 h-4 inline-block mr-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        {dateFormat(item.createAt)}
-      </time>
       <section
         className={`section-info-profit col-span-2 whitespace-no-wrap text-description mt-2 ${
           item.off > 0 ? 'flex flex-wrap off' : 'flex flex-wrap no-off'
@@ -58,7 +40,7 @@ export default function ProductSoldItem({ item }) {
           </span>
         </p>
         <p>
-          Valor hsta ayer:&nbsp;
+          Valor:&nbsp;
           {item.off > 0 && (
             <span className={`rounded-full px-2 py-small text-alain-blue-500 bg-alain-blue-100`}>
               ${item.value_off}
@@ -80,6 +62,26 @@ export default function ProductSoldItem({ item }) {
           </span>
         </p>
       </section>
+      <section className="grid items-center justify-start my-2 ">
+        <time
+          dateTime={item.sold_date}
+          className="py-small pl-1 pr-3 rounded-full text-description bg-background text-slate-gray-400 flex items-center">
+          <svg
+            className="w-4 h-4 inline-block mr-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          {dateFormat(item.sold_date)}
+        </time>
+      </section>
       <button className="text-xs text-red-400 pt-4 pr-6">Cancelar venta</button>
       <style global jsx>{`
         div.section-main-sold {
@@ -93,6 +95,7 @@ export default function ProductSoldItem({ item }) {
         }
         section.no-off > *:not(:last-child) {
           margin-right: 1rem;
+          margin-bottom: 0.2rem;
         }
       `}</style>
     </li>
