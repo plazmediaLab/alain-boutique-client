@@ -65,8 +65,10 @@ export default function SignUpForm() {
       <SubmitButton
         disabled={formik.isValid && role ? false : true}
         loading={loading}
-        bg="alain-blue-500"
-        hover="alain-blue-600">
+        bg="bg-alain-blue-500"
+        border="border-alain-blue-500"
+        hoverbg="bg-alain-blue-600"
+        hoverborder="border-alain-blue-600">
         {loading ? <LoadingIcon fill="#fff" w="16" h="16" classN="m-1 mx-auto" /> : 'Registrar'}
       </SubmitButton>
 
