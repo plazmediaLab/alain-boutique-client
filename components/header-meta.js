@@ -18,9 +18,9 @@ export default function HeaderMeta() {
       />
       <meta name="author" content="Adrian Nieves Uribe" />
       <meta name="copyright" content="Plazmedia & Alain Boutique" />
-      <link
+      {/* <link
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"
-        rel="stylesheet"></link>
+        rel="stylesheet"></link> */}
       <html lang="es"></html>
     </Head>
   );

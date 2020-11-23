@@ -1,5 +1,7 @@
 import css from 'styled-jsx/css';
 
+// font-family: 'Rubik', sans-serif;
+
 export const globalStyles = css.global`
   *:focus,
   button:focus {
