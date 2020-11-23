@@ -8,8 +8,6 @@ import timeAgoDAYJS, { dateFormat } from 'helpers/timeAgoDAYJS';
 import useProductUpdate from 'hooks/useProductUpdate';
 
 export default function ProductItem({ item, productsActive }) {
-  // TODO · TimeStamp a la fecha de creación 11/19/2020
-
   const [productDestoy, loadingDestroy] = useProductDestroy();
   const [productUpdateState, loadingUpdateState, state] = useProductUpdateState(item.state);
   const [productUpdate, loadingUpdate] = useProductUpdate();
